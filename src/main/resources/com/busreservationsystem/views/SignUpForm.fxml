@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.Controller">
+   <children>
+      <VBox alignment="CENTER" layoutX="631.0" prefHeight="576.0" prefWidth="393.0" spacing="50.0">
+         <children>
+            <Text fill="#de924d" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font></Text>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                        <TextField fx:id="usernameField1" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="PENCIL" size="20" />
+                        <TextField fx:id="nameField" prefWidth="260.0" promptText="Full name" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                        <TextField fx:id="emailField" prefWidth="260.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="KEY" size="20" />
+                        <TextField fx:id="passwordField1" prefWidth="260.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#signup" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: #de924d;" text="Sign Up" textFill="WHITE" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="64.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" />
+                  <Button fx:id="gotoLogin" mnemonicParsing="false" onAction="#switchForm" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: #de924d;" text="Log in" textFill="WHITE" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="60.0" right="60.0" />
+         </padding>
+      </VBox>
+      <ImageView fitHeight="576.0" fitWidth="627.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/bus_logo.png" />
+         </image>
+      </ImageView>
+      <Text fill="#de924d" layoutX="116.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUS RESERVATION SYSTEM">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

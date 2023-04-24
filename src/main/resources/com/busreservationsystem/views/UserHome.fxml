@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.Controller">
+    <children>
+        <VBox alignment="CENTER" prefHeight="576.0" prefWidth="260.0" spacing="80.0" style="-fx-background-color: white;">
+            <children>
+                <Text fill="#de924d" strokeType="OUTSIDE" strokeWidth="0.0" text="USER INFO">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font></Text>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                        <Label text="First Last" />
+                            </children>
+                        </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                        <Label text="Email" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="PASTE" size="20" />
+                        <Label text="Customer" />
+                     </children>
+                  </HBox>
+                    </children>
+                </VBox>
+                  <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #de924d;" text="Edit" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" />
+               </graphic>
+            </Button>
+            </children>
+            <padding>
+                <Insets left="30.0" right="30.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
