@@ -10,13 +10,28 @@ package com.busreservationsystem.system;
  * @author Christopher Soussa
  */
 
-public class Client extends User {
+public class Client extends User implements Transactional {
 
     private double accountBalance;
 
     public Client(String fullName, String username, String password, String email, double startingBalance) {
         super(fullName, username, password, email);
         this.accountBalance = startingBalance;
+    }
+
+    @Override
+    public void deposit(double amount) {
+
+    }
+
+    @Override
+    public void withdraw(double amount) {
+
+    }
+
+    @Override
+    public double getBalance() {
+        return 0;
     }
 
     public double getAccountBalance() {

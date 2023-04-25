@@ -25,11 +25,11 @@ public class Database {
      *
      * @param customerJSON File name of customers JSON file.
      * @param adminJSON File name of admins JSON file.
-     * @param bookingJSON File name of bookings JSON file.
+     * @param bookingsJSON File name of bookings JSON file.
      * @param busJSON File name of buses JSON file.
      */
 
-    public Database(String customerJSON, String adminJSON, String bookingJSON, String busJSON) {
+    public Database(String customerJSON, String adminJSON, String bookingsJSON, String busJSON) {
         System.out.println("do stuff");
     }
 }
