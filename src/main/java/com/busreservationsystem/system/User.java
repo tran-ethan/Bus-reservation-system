@@ -1,4 +1,4 @@
-package com.busreservationsystem.Users;
+package com.busreservationsystem.system;
 
 /**
  * The User class represents a user entity in bus reservation system.
@@ -11,39 +11,29 @@ package com.busreservationsystem.Users;
 
 public abstract class User {
 
-    private String firstName, lastName, username, password, email;
+    private String fullName, username, password, email;
 
     /**
      * Constructor for the User class.
      *
-     * @param firstName First name of the user
-     * @param lastName Last name of user
-     * @param username Username of user
-     * @param password Password of user
-     * @param email Email address of user
+     * @param fullName First and last name of user.
+     * @param username Username and unique identifier of user.
+     * @param password Password of user.
+     * @param email Email address of user.
      */
-    public User(String firstName, String lastName, String username, String password, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String fullName, String username, String password, String email) {
+        this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getUsername() {

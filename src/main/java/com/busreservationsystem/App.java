@@ -1,18 +1,17 @@
 package com.busreservationsystem;
 
-import com.busreservationsystem.Users.User;
+import com.busreservationsystem.system.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class App extends Application {
 
-    public static Scene scene;
-    public static ArrayList<User> users;
+    private static Scene scene;
+    private static Database database;
 
     @Override
     public void start(Stage stage) {
@@ -35,6 +34,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        database = new Database("customers", "admins", "bookings", "buses");
         launch();
     }
 }

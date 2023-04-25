@@ -1,6 +1,7 @@
-package com.busreservationsystem;
+package com.busreservationsystem.controllers;
 
-import com.busreservationsystem.Users.Customer;
+import com.busreservationsystem.App;
+import com.busreservationsystem.system.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,10 +39,7 @@ public class Controller {
         String password = passwordField.getText();
         String email = emailField.getText();
         String fullName = nameField.getText();
-        String firstName = fullName.split(" ")[0];
-        String lastName = fullName.split(" ")[1];
-        Customer customer = new Customer(firstName, lastName, username, password, email, 10.0);
-        App.users.add(customer);
+        Client client = new Client(fullName, username, password, email, 10.0);
     }
 
     @FXML

@@ -1,8 +1,8 @@
-package com.busreservationsystem.Users;
+package com.busreservationsystem.system;
 
 /**
  * The Customer class represents a customer in bus reservation system
- * with the ability to make bookings and manage balance
+ * with the ability to search and book flights.
  * Is subclass of User.
  *
  * @author Ethan Tran
@@ -10,12 +10,12 @@ package com.busreservationsystem.Users;
  * @author Christopher Soussa
  */
 
-public class Customer extends User {
+public class Client extends User {
 
     private double accountBalance;
 
-    public Customer(String firstName, String lastName, String username, String password, String email, double startingBalance) {
-        super(firstName, lastName, username, password, email);
+    public Client(String fullName, String username, String password, String email, double startingBalance) {
+        super(fullName, username, password, email);
         this.accountBalance = startingBalance;
     }
 
@@ -35,6 +35,6 @@ public class Customer extends User {
 
     @Override
     public String getType() {
-        return "Customer";
+        return "Client";
     }
 }

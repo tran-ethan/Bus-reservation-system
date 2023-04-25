@@ -1,8 +1,8 @@
-package com.busreservationsystem.Users;
+package com.busreservationsystem.system;
 
 /**
  * The Admin class represents an administrator in bus reservation system
- * with the ability to manage customers.
+ * with the ability to manage customers and flights.
  * Is subclass of User.
  *
  * @author Ethan Tran
@@ -12,8 +12,8 @@ package com.busreservationsystem.Users;
 
 public class Admin extends User {
 
-    public Admin(String firstName, String lastName, String username, String password, String email) {
-        super(firstName, lastName, username, password, email);
+    public Admin(String fullName, String username, String password, String email) {
+        super(fullName, username, password, email);
     }
 
     public String getType() {
