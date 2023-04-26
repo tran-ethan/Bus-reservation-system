@@ -32,7 +32,7 @@ public class Client extends User implements Transactional {
 
     @Override
     public double getBalance() {
-        return 0;
+        return balance;
     }
 
     public double getAccountBalance() {

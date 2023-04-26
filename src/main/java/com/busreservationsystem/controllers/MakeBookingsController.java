@@ -1,6 +1,8 @@
 package com.busreservationsystem.controllers;
 
+import com.busreservationsystem.App;
 import com.busreservationsystem.system.Bus;
+import com.busreservationsystem.system.Database;
 import com.busreservationsystem.system.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +17,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 public class MakeBookingsController implements Initializable {
 
@@ -83,16 +87,21 @@ public class MakeBookingsController implements Initializable {
         dateCol.setCellFactory(new DateCellFactory());
         statusCol.setCellValueFactory(cellData -> cellData.getValue().getStatus());
 
-        Bus exampleBus = new Bus("QWERTY", 13.99, "Montreal", "NYC",
-                LocalDate.of(2023, 5, 30),
-                LocalTime.of(9, 0), LocalTime.of(12, 0),
-                Status.ON_TIME);
-        Bus exampleBus2 = new Bus("MORTY", 13.99, "Montreal", "Vancouver",
-                LocalDate.of(2023, 5, 29),
-                LocalTime.of(8, 0), LocalTime.of(12, 0),
-                Status.DELAYED);
-
-        ObservableList<Bus> buses = FXCollections.observableArrayList(exampleBus, exampleBus2);
+//        Bus exampleBus = new Bus("QWERTY", 13.99, "Montreal", "NYC",
+//                LocalDate.of(2023, 5, 30),
+//                LocalTime.of(9, 0), LocalTime.of(12, 0),
+//                Status.ON_TIME);
+//        Bus exampleBus2 = new Bus("MORTY", 13.99, "Montreal", "Vancouver",
+//                LocalDate.of(2023, 5, 29),
+//                LocalTime.of(8, 0), LocalTime.of(12, 0),
+//                Status.DELAYED);
+//
+//        TreeSet<Bus> busess = new TreeSet<>();
+//        busess.add(exampleBus2);
+//        busess.add(exampleBus);
+        TreeSet<Bus> busess = Database.getBuses();
+        System.out.println("length: " + busess.size());
+        ObservableList<Bus> buses = FXCollections.observableArrayList(busess);
         table.setItems(buses);
     }
 
@@ -114,7 +123,7 @@ public class MakeBookingsController implements Initializable {
             @Override
             protected void updateItem(LocalTime item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
+                if (empty || item == null) {
                     setText(null);
                 } else {
                     setText(String.format(item.format(DateTimeFormatter.ofPattern("hh:mm:ss"))));
@@ -140,7 +149,7 @@ public class MakeBookingsController implements Initializable {
             @Override
             protected void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
+                if (empty || item == null) {
                     setText(null);
                 } else {
                     setText(String.format(item.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))));

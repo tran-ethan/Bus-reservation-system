@@ -1,6 +1,14 @@
 package com.busreservationsystem.system;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * The Database class embodies a database system to keep track of all
@@ -10,12 +18,11 @@ import java.util.HashSet;
  * @author Nikolaos Polyhronopoulos
  * @author Christopher Soussa
  */
-
 public class Database {
 
-    private static final HashSet<User> users = new HashSet<>();
-    private static final HashSet<Bus> buses = new HashSet<>();
-    private static final HashSet<Booking> bookings = new HashSet<>();
+    private final static HashSet<User> users = new HashSet<>();
+    private final static TreeSet<Bus> buses = new TreeSet<>();
+    private final static HashSet<Booking> bookings = new HashSet<>();
 
     /**
      * Constructor for the Database.
@@ -30,6 +37,28 @@ public class Database {
      */
 
     public Database(String customerJSON, String adminJSON, String bookingsJSON, String busJSON) {
-        System.out.println("do stuff");
+        loadJson(busJSON, buses);
+    }
+
+    public void loadJson(String json, Set<?> data) {
+        json = String.format("src/main/resources/com/busreservationsystem/database/%s.json", json);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        File jsonFile = new File(json);
+        try {
+            CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(TreeSet.class, Bus.class);
+            data.addAll(objectMapper.readValue(jsonFile, collectionType));
+            for (Bus bus: buses) {
+                System.out.println(bus.toString());
+                System.out.println(bus.getArrivalTimeValue());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static TreeSet<Bus> getBuses() {
+        return buses;
     }
 }
