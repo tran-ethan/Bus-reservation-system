@@ -1,31 +1,94 @@
 package com.busreservationsystem.system;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Bus {
 
-    private static int nextId = 1;
 
     private String id;
     private double ticketPrice;
-    private String source;
+    private String origin;
     private String destination;
-    private Status status;
+    private final ObjectProperty<Status> status = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalDate> departureDate = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> arrivalTime = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> departureTime = new SimpleObjectProperty<>();
 
-    private Duration duration;
-
-    private LocalDateTime departureDateTime;
-    private LocalDateTime arrivalDateTime;
-
-    public Bus(double ticketPrice, String source, String destination, Status status, Duration duration, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {
-        this.id = String.format("B%04d", nextId++);
+    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status) {
+        this.id = id;
         this.ticketPrice = ticketPrice;
-        this.source = source;
+        this.origin = origin;
         this.destination = destination;
-        this.status = status;
-        this.duration = duration;
-        this.departureDateTime = departureDateTime;
-        this.arrivalDateTime = arrivalDateTime;
+        this.status.set(status);
+        this.departureDate.set(departureDate);
+        this.departureTime.set(departureTime);
+        this.arrivalTime.set(arrivalTime);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public ObjectProperty<Status> getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status.set(status);
+    }
+
+    public ObjectProperty<LocalDate> getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate.set(departureDate);
+    }
+
+    public ObjectProperty<LocalTime> getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime.set(departureTime);
+    }
+
+    public ObjectProperty<LocalTime> getArrivalTime() { return arrivalTime; }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime.set(arrivalTime);
     }
 }

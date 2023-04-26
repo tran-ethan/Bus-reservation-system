@@ -33,6 +33,10 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
     }
 
+    public static Database getDB() {
+        return database;
+    }
+
     public static void main(String[] args) {
         database = new Database("customers", "admins", "bookings", "buses");
         launch();

@@ -12,16 +12,17 @@ package com.busreservationsystem.system;
 
 public class Client extends User implements Transactional {
 
-    private double accountBalance;
+    private double balance;
 
     public Client(String fullName, String username, String password, String email, double startingBalance) {
         super(fullName, username, password, email);
-        this.accountBalance = startingBalance;
+        this.balance = startingBalance;
     }
 
     @Override
     public void deposit(double amount) {
-
+        if (amount > 0) this.balance += amount;
+        else System.out.println("Invalid amount (must be positive).");
     }
 
     @Override
@@ -35,17 +36,11 @@ public class Client extends User implements Transactional {
     }
 
     public double getAccountBalance() {
-        return accountBalance;
+        return balance;
     }
 
-    public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
-    }
-
-    public void addToAccountBalance(double addAmount) {
-        if (addAmount > 0)
-            this.accountBalance += addAmount;
-        else System.out.println("Invalid ammount. The amount to add has to be positive.");
+    public void setAccountBalance(double balance) {
+        this.balance = balance;
     }
 
     @Override

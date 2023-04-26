@@ -9,7 +9,12 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class Controller {
+/**
+ * Controller class manages the sign-up and login form in a JavaFX application.
+ * This controller handles the logic for user authentication and account creation functionalities.
+ *
+ */
+public class AuthenticationController {
 
     @FXML
     private TextField usernameField;
@@ -24,15 +29,25 @@ public class Controller {
     private TextField nameField;
 
 
+    /**
+     * Handle the login button click event.
+     * Validates user input data, performs log in operation, and shows appropriate messages or alerts
+     * on success or failure.
+     */
     @FXML
     protected void login() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if (username.equals("username") && password.equals("password")) {
-            loadFXML("UserHome");
+            loadFXML("UserMakeBookings");
         }
     }
 
+    /**
+     * Handle the sign-up button click event.
+     * Validates user input data, creates a new account, and performs sign up operation.
+     * Shows appropriate messages or alerts on success or failure.
+     */
     @FXML
     protected void signup() {
         String username = usernameField.getText();
