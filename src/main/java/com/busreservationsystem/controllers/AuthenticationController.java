@@ -39,7 +39,7 @@ public class AuthenticationController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if (username.equals("username") && password.equals("password")) {
-            loadFXML("UserMakeBookings");
+            loadFXML("ClientMakeBookings");
         }
     }
 
