@@ -7,12 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.TreeSet;
 
 public class App extends Application {
 
     private static Scene scene;
-    private static Database database;
 
     @Override
     public void start(Stage stage) {
@@ -34,12 +32,8 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
     }
 
-    public static Database getDB() {
-        return database;
-    }
-
     public static void main(String[] args) {
-        database = new Database("customers", "admins", "bookings", "buses");
+        new Database("clients", "admins", "bookings", "buses");
         launch();
     }
 }

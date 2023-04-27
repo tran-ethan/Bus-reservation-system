@@ -51,14 +51,15 @@
                 </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: EEEBD4; -fx-background-radius: 0;" text="Make booking" />
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;" text="View bookings" />
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;" text="Edit profile" />
+                  <Button fx:id="gotoMakeBookings" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: EEEBD4; -fx-background-radius: 0;" text="Make booking" />
+                  <Button fx:id="gotoViewBookings" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;" text="View bookings" />
+                  <Button fx:id="gotoEditProfile" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;" text="Edit profile" />
+                  <Button fx:id="gotoManageBalance" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;" text="Manage balance" />
                </children>
             </VBox>
             </children>
         </VBox>
-      <TableView fx:id="table" editable="true" layoutX="289.0" layoutY="170.0" prefHeight="376.0" prefWidth="692.0">
+      <TableView fx:id="table" editable="true" layoutX="289.0" layoutY="170.0" prefHeight="376.0" prefWidth="692.0" stylesheets="@tableview.css">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="25.0" text="ID" />
           <TableColumn fx:id="ticketPriceCol" prefWidth="173.0" text="Ticket Price" />
@@ -110,6 +111,7 @@
                </children>
             </HBox>
             <Button fx:id="submit" mnemonicParsing="false" onAction="#submitSearch" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #de924d;" text="Submit" textFill="WHITE" />
+            <Button fx:id="book" mnemonicParsing="false" onAction="#makeBooking" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #de924d;" text="Book" textFill="WHITE" />
          </children>
       </HBox>
       <FontAwesomeIconView fill="#de924d" glyphName="FILTER" layoutX="289.0" layoutY="128.0" size="20" />

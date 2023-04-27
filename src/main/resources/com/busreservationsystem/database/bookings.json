@@ -1,0 +1,12 @@
+[ {
+  "busId" : "F0KI341",
+  "origin" : "Sherbrooke",
+  "destination" : "Toronto",
+  "price" : 24.99,
+  "departureTime" : [ 23, 59 ],
+  "departureDate" : [ 2023, 5, 27 ],
+  "clientUsername" : "ethan312",
+  "clientName" : "Ethan Tran",
+  "row" : "A",
+  "column" : 5
+} ]

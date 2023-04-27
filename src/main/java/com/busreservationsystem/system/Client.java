@@ -12,8 +12,14 @@ package com.busreservationsystem.system;
 
 public class Client extends User implements Transactional {
 
-    private double balance;
+    public double balance;
+    public String type;
 
+    public Client() {}
+
+    public Client(String fullName, String username, String password, String email) {
+        this(fullName, username, password, email, 0.0);
+    }
     public Client(String fullName, String username, String password, String email, double startingBalance) {
         super(fullName, username, password, email);
         this.balance = startingBalance;
@@ -35,16 +41,21 @@ public class Client extends User implements Transactional {
         return balance;
     }
 
-    public double getAccountBalance() {
-        return balance;
-    }
-
-    public void setAccountBalance(double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
     @Override
     public String getType() {
         return "Client";
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "balance=" + balance +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

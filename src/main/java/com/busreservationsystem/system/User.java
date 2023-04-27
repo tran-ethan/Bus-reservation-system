@@ -11,7 +11,9 @@ package com.busreservationsystem.system;
 
 public abstract class User {
 
-    private String fullName, username, password, email;
+    protected String fullName, username, password, email;
+
+    public User() {}
 
     /**
      * Constructor for the User class.
@@ -64,5 +66,5 @@ public abstract class User {
      * Returns the type of User as a String.
      * @return Type
      */
-    abstract String getType();
+    public abstract String getType();
 }

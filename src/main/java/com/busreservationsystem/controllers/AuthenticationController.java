@@ -1,20 +1,17 @@
 package com.busreservationsystem.controllers;
 
-import com.busreservationsystem.App;
 import com.busreservationsystem.system.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 /**
- * Controller class manages the sign-up and login form in a JavaFX application.
+ * AuthenticationController manages the sign-up and login form in a JavaFX application.
  * This controller handles the logic for user authentication and account creation functionalities.
  *
  */
-public class AuthenticationController {
+public class AuthenticationController extends Controller {
 
     @FXML
     private TextField usernameField;
@@ -35,7 +32,7 @@ public class AuthenticationController {
      * on success or failure.
      */
     @FXML
-    protected void login() {
+    void login() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if (username.equals("username") && password.equals("password")) {
@@ -49,7 +46,7 @@ public class AuthenticationController {
      * Shows appropriate messages or alerts on success or failure.
      */
     @FXML
-    protected void signup() {
+    void signup() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String email = emailField.getText();
@@ -58,6 +55,7 @@ public class AuthenticationController {
     }
 
     @FXML
+    @Override
     protected void switchForm(ActionEvent event) {
         // Switch scenes from Login/Signup
         Button clickedButton = (Button) event.getSource();
@@ -66,12 +64,4 @@ public class AuthenticationController {
         loadFXML(buttonId.equals("gotoRegister") ? "SignUpForm" : "LoginForm");
     }
 
-    private void loadFXML(String fxml) {
-        // Load FXML File
-        try {
-            App.setRoot(fxml);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

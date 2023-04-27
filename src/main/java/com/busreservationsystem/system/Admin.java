@@ -16,6 +16,7 @@ public class Admin extends User {
         super(fullName, username, password, email);
     }
 
+    @Override
     public String getType() {
         return "Administrator";
     }

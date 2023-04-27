@@ -1,6 +1,5 @@
 package com.busreservationsystem.controllers;
 
-import com.busreservationsystem.App;
 import com.busreservationsystem.system.Bus;
 import com.busreservationsystem.system.Database;
 import com.busreservationsystem.system.Status;
@@ -17,11 +16,16 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
 
-public class MakeBookingsController implements Initializable {
+/**
+ * MakeBookingsController is responsible for managing the booking process for the Bus Reservation System for the Client.
+ * This controller initializes the bus table view with data from the database, displays bus information
+ * including ID, origin, destination, departure time, arrival time, departure date, status, and ticket price.
+ * Clients are able to search for buses and sort them according to specified fields.
+ * This ability will allow clients to book a seat on the bus.
+ */
+public class MakeBookingsController extends Controller implements Initializable {
 
     @FXML
     private TableColumn<Bus, LocalTime> arrivalCol;
@@ -33,7 +37,7 @@ public class MakeBookingsController implements Initializable {
     private TextField dateField;
 
     @FXML
-    private ChoiceBox<String> dateSortField;
+    protected ChoiceBox<String> dateSortField;
 
     @FXML
     private TableColumn<Bus, LocalTime> departureCol;
@@ -57,7 +61,7 @@ public class MakeBookingsController implements Initializable {
     private TableColumn<Bus, String> originCol;
 
     @FXML
-    private ChoiceBox<String> priceSortField;
+    protected ChoiceBox<String> priceSortField;
 
     @FXML
     private TableColumn<Bus, Status> statusCol;
@@ -66,19 +70,33 @@ public class MakeBookingsController implements Initializable {
     private Button submit;
 
     @FXML
+    private Button book;
+
+    @FXML
     private TableView<Bus> table;
 
     @FXML
     private TableColumn<Bus, Integer> ticketPriceCol;
 
-    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+    @FXML
+    private Button gotoMakeBookings;
+    @FXML
+    private Button gotoViewBookings;
+
+    @FXML
+    private Button gotoEditProfile;
+
+    @FXML
+    private Button gotoManageBalance;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idCol.setCellValueFactory(new PropertyValueFactory<Bus, String>("id"));
-        ticketPriceCol.setCellValueFactory(new PropertyValueFactory<Bus, Integer>("ticketPrice"));
-        originCol.setCellValueFactory(new PropertyValueFactory<Bus, String>("origin"));
-        destinationCol.setCellValueFactory(new PropertyValueFactory<Bus, String>("destination"));
+        // Set Cell Factory values to match
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ticketPriceCol.setCellValueFactory(new PropertyValueFactory<>("ticketPrice"));
+        originCol.setCellValueFactory(new PropertyValueFactory<>("origin"));
+        destinationCol.setCellValueFactory(new PropertyValueFactory<>("destination"));
         departureCol.setCellValueFactory(cellData -> cellData.getValue().getDepartureTime());
         departureCol.setCellFactory(new TimeCellFactory());
         arrivalCol.setCellValueFactory(cellData -> cellData.getValue().getArrivalTime());
@@ -86,22 +104,8 @@ public class MakeBookingsController implements Initializable {
         dateCol.setCellValueFactory(cellData -> cellData.getValue().getDepartureDate());
         dateCol.setCellFactory(new DateCellFactory());
         statusCol.setCellValueFactory(cellData -> cellData.getValue().getStatus());
-
-//        Bus exampleBus = new Bus("QWERTY", 13.99, "Montreal", "NYC",
-//                LocalDate.of(2023, 5, 30),
-//                LocalTime.of(9, 0), LocalTime.of(12, 0),
-//                Status.ON_TIME);
-//        Bus exampleBus2 = new Bus("MORTY", 13.99, "Montreal", "Vancouver",
-//                LocalDate.of(2023, 5, 29),
-//                LocalTime.of(8, 0), LocalTime.of(12, 0),
-//                Status.DELAYED);
-//
-//        TreeSet<Bus> busess = new TreeSet<>();
-//        busess.add(exampleBus2);
-//        busess.add(exampleBus);
-        TreeSet<Bus> busess = Database.getBuses();
-        System.out.println("length: " + busess.size());
-        ObservableList<Bus> buses = FXCollections.observableArrayList(busess);
+        // Set table values according to database
+        ObservableList<Bus> buses = FXCollections.observableArrayList(Database.getBuses());
         table.setItems(buses);
     }
 
@@ -121,7 +125,7 @@ public class MakeBookingsController implements Initializable {
         // Custom TableCell implementation for departure column
         private static class TimeTableCell extends TableCell<Bus, LocalTime> {
             @Override
-            protected void updateItem(LocalTime item, boolean empty) {
+            public void updateItem(LocalTime item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
@@ -147,7 +151,7 @@ public class MakeBookingsController implements Initializable {
 
         private static class DepartureTableCell extends TableCell<Bus, LocalDate> {
             @Override
-            protected void updateItem(LocalDate item, boolean empty) {
+            public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
@@ -157,9 +161,27 @@ public class MakeBookingsController implements Initializable {
             }
         }
     }
+
     @FXML
-    void submitSearch(ActionEvent event) {
+    @Override
+    protected void switchForm(ActionEvent event) {
+        // Switch scenes from buttons on the bottom left
+        Button clickedButton = (Button) event.getSource();
+        String buttonId = clickedButton.getId();
+        switch (buttonId) {
+            case "gotoMakeBookings" -> loadFXML("ClientMakeBookings");
+            case "gotoViewBookings" -> loadFXML("ClientViewBookings");
+            case "gotoEditProfile" -> loadFXML("EditProfile");
+            case "gotoManageBalance" -> loadFXML("sdf");
+        }
+    }
+    @FXML
+    private void submitSearch(ActionEvent event) {
 
     }
 
+    @FXML
+    private void makeBooking(ActionEvent event) {
+
+    }
 }

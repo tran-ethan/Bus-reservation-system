@@ -1,0 +1,19 @@
+[ {
+  "fullName" : "Nikolaos Polyhronopoulos",
+  "username" : "niko123",
+  "password" : "nikopass",
+  "email" : "nikopolyhron@gmail.com",
+  "balance" : 0.0
+}, {
+  "fullName" : "Ethan Tran",
+  "username" : "ethan312",
+  "password" : "pass",
+  "email" : "ethantran@yahoo.ca",
+  "balance" : 0.0
+}, {
+  "fullName" : "Christopher Soussa",
+  "username" : "chris321",
+  "password" : "password",
+  "email" : "chrissoussa@yahoo.com",
+  "balance" : 0.0
+} ]

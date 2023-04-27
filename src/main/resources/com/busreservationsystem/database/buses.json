@@ -25,4 +25,13 @@
   "departureDate" : [ 2023, 5, 30 ],
   "arrivalTime" : [ 13, 0 ],
   "departureTime" : [ 2, 0 ]
+}, {
+  "id" : "F0KI341",
+  "ticketPrice" : 24.99,
+  "origin" : "Sherbrooke",
+  "destination" : "Toronto",
+  "status" : "ON_TIME",
+  "departureDate" : [ 2023, 5, 27 ],
+  "arrivalTime" : [ 23, 59 ],
+  "departureTime" : [ 19, 0 ]
 } ]
