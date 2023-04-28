@@ -24,7 +24,8 @@ public class Database {
     private final static ArrayList<Bus> buses = new ArrayList<>();
     private final static ArrayList<Booking> bookings = new ArrayList<>();
 
-    private static User currentUser = null;
+    private static Admin currentAdmin = null;
+    private static Client currentClient = null;
     /**
      * Constructor for the Database.
      * Fills all according Lists according to JSON files specified.
@@ -83,9 +84,22 @@ public class Database {
         }
     }
 
-    public static void setCurrentUser(User user) {
-        currentUser = user;
+    public static void setCurrentAdmin(Admin admin) {
+        currentAdmin = admin;
     }
+
+    public static void setCurrentClient(Client client) {
+        currentClient = client;
+    }
+
+    public static Admin getCurrentAdmin() {
+        return currentAdmin;
+    }
+
+    public static Client getCurrentClient() {
+        return currentClient;
+    }
+
     public static void addClient(Client client) {
         clients.add(client);
     }

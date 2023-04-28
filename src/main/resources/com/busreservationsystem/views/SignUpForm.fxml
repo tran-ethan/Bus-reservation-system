@@ -25,7 +25,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
                      <children>
                         <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
-                        <TextField fx:id="usernameField1" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="usernameField" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="14.0">
@@ -43,7 +43,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
                         <FontAwesomeIconView fill="#de924d" glyphName="KEY" size="20" />
-                        <TextField fx:id="passwordField1" prefWidth="260.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="passwordField" prefWidth="260.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" onAction="#signup" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: #de924d;" text="Sign Up" textFill="WHITE" />

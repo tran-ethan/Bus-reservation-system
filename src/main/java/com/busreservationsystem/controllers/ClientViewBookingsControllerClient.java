@@ -57,6 +57,7 @@ public class ClientViewBookingsControllerClient extends ClientMakeBookingsContro
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCredentials();
         // Set Cell Factory values to match
         busIdCol.setCellValueFactory(new PropertyValueFactory<>("busId"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));

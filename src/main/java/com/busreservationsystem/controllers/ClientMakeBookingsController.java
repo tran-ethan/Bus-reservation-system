@@ -81,6 +81,7 @@ public class ClientMakeBookingsController extends ClientController implements In
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCredentials();
         // Set Cell Factory values to match
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         ticketPriceCol.setCellValueFactory(new PropertyValueFactory<>("ticketPrice"));

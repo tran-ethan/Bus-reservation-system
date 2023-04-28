@@ -38,6 +38,7 @@ public class AuthenticationController extends ClientController {
         String password = passwordField.getText();
         for (Client client: Database.getClients()) {
             if (username.equals(client.getUsername()) && password.equals(client.getPassword())) {
+                Database.setCurrentClient(client);
                 loadFXML("ClientMakeBookings");
                 break;
             }
@@ -55,7 +56,9 @@ public class AuthenticationController extends ClientController {
         String password = passwordField.getText();
         String email = emailField.getText();
         String fullName = nameField.getText();
-        Client client = new Client(fullName, username, password, email, 0);
+        Client client = new Client(fullName, username, password, email);
+        Database.addClient(client);
+        loadFXML("LoginForm");
     }
 
     @FXML
