@@ -28,9 +28,10 @@ public class AuthenticationController extends ClientController {
 
 
     /**
-     * Handle the login button click event.
-     * Validates user input data, performs log in operation, and shows appropriate messages or alerts
-     * on success or failure.
+     * Handle the login button click event.Validates user input data, performs log in operation, and
+     * shows appropriate messages or alerts on success or failure.
+     * It will set the current user in the Database class in order for other controllers to be able to fetch
+     * information regarding the user in other scenes.
      */
     @FXML
     void login() {

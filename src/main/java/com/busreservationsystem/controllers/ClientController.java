@@ -10,6 +10,12 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
+
+/**
+ * ClientController is the abstract superclass of all Controller classes for the Client view.
+ * This controller handles common operations among all its ClientController subclasses.
+ *
+ */
 public abstract class ClientController {
 
     @FXML
@@ -36,9 +42,12 @@ public abstract class ClientController {
     @FXML
     public Button gotoManageBalance;
 
-
+    /**
+     * This method is called when one of the buttons on the bottom left of the scene is clicked.
+     * Handles the logic for switching between views.
+     * @param event The ActionEvent triggered by clicking one of the buttons.
+     */
     public void switchForm(ActionEvent event) {
-        // Switch scenes from buttons on the bottom left
         Button clickedButton = (Button) event.getSource();
         String buttonId = clickedButton.getId();
         switch (buttonId) {
@@ -49,6 +58,10 @@ public abstract class ClientController {
         }
     }
 
+    /**
+     * This method is called in the initialize() method of its subclasses.
+     * Handles the logic loading the user data in the top left pane by retrieving the current client from the Database.
+     */
     public void setCredentials() {
         Client client = Database.getCurrentClient();
         usernameLabel.setText(client.getUsername());
@@ -57,6 +70,10 @@ public abstract class ClientController {
         balanceLabel.setText(String.format("%.2f$", client.getBalance()));
     }
 
+    /**
+     * This method loads an FXML file and sets it as the root for the current scene.
+     * @param fxml The filename of the FXML file to load.
+     */
     protected void loadFXML(String fxml) {
         // Load FXML File
         try {
