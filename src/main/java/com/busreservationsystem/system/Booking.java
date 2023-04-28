@@ -7,6 +7,16 @@ import javafx.beans.property.SimpleObjectProperty;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
+/**
+ * The Booking class represents a booking ticket linked to a Bus, Client, and Seat,
+ * and contains the necessary information regarding the booking ticket.
+ * A single booking ticket is unique to the Client, and clients will only be able to view their own bookings.
+ *
+ * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
+ * @author Christopher Soussa
+ */
 public class Booking implements Comparable<Booking> {
 
     private String busId;
@@ -20,13 +30,15 @@ public class Booking implements Comparable<Booking> {
     private char row;
     private int column;
 
+
+    public Booking() {}
     public Booking(Bus bus, Client client, Seat seat) {
         this.busId = bus.getId();
         this.origin = bus.getOrigin();
         this.destination = bus.getDestination();
         this.price = bus.getTicketPrice();
         this.departureDate.set(bus.getDepartureDateValue());
-        this.departureTime.set(bus.getArrivalTimeValue());
+        this.departureTime.set(bus.getDepartureTimeValue());
         this.clientUsername = client.getUsername();
         this.clientName = client.getFullName();
         this.row = seat.getRow();
@@ -124,7 +136,23 @@ public class Booking implements Comparable<Booking> {
     }
 
     @Override
-    public int compareTo(Booking o) {
-        return 0;
+    public int compareTo(Booking booking) {
+        return busId.compareTo(booking.getBusId());
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "busId='" + busId + '\'' +
+                ", origin='" + origin + '\'' +
+                ", destination='" + destination + '\'' +
+                ", price=" + price +
+                ", departureTime=" + getDepartureTimeValue() +
+                ", departureDate=" + getDepartureDateValue() +
+                ", clientUsername='" + clientUsername + '\'' +
+                ", clientName='" + clientName + '\'' +
+                ", row=" + row +
+                ", column=" + column +
+                '}';
     }
 }

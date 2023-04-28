@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * Clients are able to search for buses and sort them according to specified fields.
  * This ability will allow clients to book a seat on the bus.
  */
-public class MakeBookingsController extends Controller implements Initializable {
+public class ClientMakeBookingsController extends ClientController implements Initializable {
 
     @FXML
     private TableColumn<Bus, LocalTime> arrivalCol;
@@ -78,17 +78,6 @@ public class MakeBookingsController extends Controller implements Initializable 
     @FXML
     private TableColumn<Bus, Integer> ticketPriceCol;
 
-    @FXML
-    private Button gotoMakeBookings;
-    @FXML
-    private Button gotoViewBookings;
-
-    @FXML
-    private Button gotoEditProfile;
-
-    @FXML
-    private Button gotoManageBalance;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -115,7 +104,7 @@ public class MakeBookingsController extends Controller implements Initializable 
      * class for displaying LocalTime values in the departure and
      * arrival columns according to a Time format of 'hh:mm:ss'.
      */
-    public static class TimeCellFactory implements Callback<TableColumn<Bus, LocalTime>, TableCell<Bus, LocalTime>> {
+    private static class TimeCellFactory implements Callback<TableColumn<Bus, LocalTime>, TableCell<Bus, LocalTime>> {
 
         @Override
         public TableCell<Bus, LocalTime> call(TableColumn<Bus, LocalTime> col) {
@@ -142,7 +131,7 @@ public class MakeBookingsController extends Controller implements Initializable 
      * for displaying LocalDate values in the departure columns
      * according to a Date format of 'yyyy/MM/dd'.
      */
-    public static class DateCellFactory implements Callback<TableColumn<Bus, LocalDate>, TableCell<Bus, LocalDate>> {
+    private static class DateCellFactory implements Callback<TableColumn<Bus, LocalDate>, TableCell<Bus, LocalDate>> {
 
         @Override
         public TableCell<Bus, LocalDate> call(TableColumn<Bus, LocalDate> col) {
@@ -162,19 +151,6 @@ public class MakeBookingsController extends Controller implements Initializable 
         }
     }
 
-    @FXML
-    @Override
-    protected void switchForm(ActionEvent event) {
-        // Switch scenes from buttons on the bottom left
-        Button clickedButton = (Button) event.getSource();
-        String buttonId = clickedButton.getId();
-        switch (buttonId) {
-            case "gotoMakeBookings" -> loadFXML("ClientMakeBookings");
-            case "gotoViewBookings" -> loadFXML("ClientViewBookings");
-            case "gotoEditProfile" -> loadFXML("EditProfile");
-            case "gotoManageBalance" -> loadFXML("sdf");
-        }
-    }
     @FXML
     private void submitSearch(ActionEvent event) {
 

@@ -27,13 +27,13 @@ public class Client extends User implements Transactional {
 
     @Override
     public void deposit(double amount) {
-        if (amount > 0) this.balance += amount;
-        else System.out.println("Invalid amount (must be positive).");
+        balance += amount;
     }
 
     @Override
     public void withdraw(double amount) {
-
+        if (balance >= amount) this.balance -= amount;
+        else System.out.println("Withdraw failed. Insufficient balance.");
     }
 
     @Override

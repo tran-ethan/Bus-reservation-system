@@ -1,6 +1,7 @@
 package com.busreservationsystem.controllers;
 
 import com.busreservationsystem.system.Client;
+import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import javafx.scene.control.TextField;
  * This controller handles the logic for user authentication and account creation functionalities.
  *
  */
-public class AuthenticationController extends Controller {
+public class AuthenticationController extends ClientController {
 
     @FXML
     private TextField usernameField;
@@ -35,8 +36,11 @@ public class AuthenticationController extends Controller {
     void login() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (username.equals("username") && password.equals("password")) {
-            loadFXML("ClientMakeBookings");
+        for (Client client: Database.getClients()) {
+            if (username.equals(client.getUsername()) && password.equals(client.getPassword())) {
+                loadFXML("ClientMakeBookings");
+                break;
+            }
         }
     }
 
@@ -51,12 +55,12 @@ public class AuthenticationController extends Controller {
         String password = passwordField.getText();
         String email = emailField.getText();
         String fullName = nameField.getText();
-        Client client = new Client(fullName, username, password, email, 10.0);
+        Client client = new Client(fullName, username, password, email, 0);
     }
 
     @FXML
     @Override
-    protected void switchForm(ActionEvent event) {
+    public void switchForm(ActionEvent event) {
         // Switch scenes from Login/Signup
         Button clickedButton = (Button) event.getSource();
         String buttonId = clickedButton.getId();

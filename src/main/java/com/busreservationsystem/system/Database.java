@@ -1,6 +1,5 @@
 package com.busreservationsystem.system;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -8,8 +7,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -22,13 +19,15 @@ import java.util.*;
  */
 public class Database {
 
-    private final static HashSet<User> clients = new HashSet<>();
-    private final static TreeSet<Bus> buses = new TreeSet<>();
-    private final static TreeSet<Booking> bookings = new TreeSet<>();
+    private final static ArrayList<Client> clients = new ArrayList<>();
+    private final static ArrayList<Admin> admins = new ArrayList<>();
+    private final static ArrayList<Bus> buses = new ArrayList<>();
+    private final static ArrayList<Booking> bookings = new ArrayList<>();
 
+    private static User currentUser = null;
     /**
      * Constructor for the Database.
-     * Fills all according Sets according to JSON files specified.
+     * Fills all according Lists according to JSON files specified.
      * Parameters specified should contain only the basename of the JSON files
      * stored at the root level of a directory called 'database'.
      *
@@ -37,31 +36,23 @@ public class Database {
      * @param bookingsJSON File name of bookings JSON file.
      * @param busJSON File name of buses JSON file.
      */
-
     public Database(String clientsJSON, String adminJSON, String bookingsJSON, String busJSON) {
         loadJson(busJSON, buses, Bus.class);
         loadJson(clientsJSON, clients, Client.class);
-
-        // loadJson(bookingsJSON, bookings);
-//        Client ethan = new Client("Ethan Tran", "ethan312", "pass", "ethantran@yahoo.ca");
-//        Client niko = new Client("Nikolaos Polyhronopoulos", "niko123", "nikopass", "nikopolyhron@gmail.com");
-//        Client chris = new Client("Christopher Soussa", "chris321", "password", "chrissoussa@yahoo.com");
-//        addUser(ethan);
-//        addUser(niko);
-//        addUser(chris);
-//        writeJson(clientsJSON, users);
-//        Seat seat = new Seat('A', 5);
-//        Seat seat2 = new Seat('B', 2);
-//        addBooking(new Booking(buses.first(), ethan, seat));
-//        addBooking(new Booking(buses.last(), ethan, seat2));
-//        addBooking(new Booking(buses.last(), niko, seat));
-//        writeJson(bookingsJSON, bookings);
+        loadJson(bookingsJSON, bookings, Booking.class);
     }
 
-    public void loadJson(String json, Set<?> data, Class<?> classType) {
+    /**
+     * Loads the data contained in the JSON file into a given List of data.
+     *
+     * @param json The name of the JSON file to write the data into.
+     * @param data The List of data to write into the JSON file.
+     * @param classType The class type of the objects contained in the List.
+     */
+    public void loadJson(String json, List<?> data, Class<?> classType) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
-        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(Set.class, classType);
+        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, classType);
 
         json = String.format("src/main/resources/com/busreservationsystem/database/%s.json", json);
         File jsonFile = new File(json);
@@ -73,7 +64,13 @@ public class Database {
         }
     }
 
-    public void writeJson(String json, Set<?> data) {
+    /**
+     * Writes the data from the List into the given JSON file.
+     *
+     * @param json The name of the JSON file to write the data into.
+     * @param data The List of data to write into the JSON file.
+     */
+    public void writeJson(String json, List<?> data) {
         json = String.format("src/main/resources/com/busreservationsystem/database/%s.json", json);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -85,9 +82,14 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-    public static void addClient(User user) {
-        clients.add(user);
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
     }
+    public static void addClient(Client client) {
+        clients.add(client);
+    }
+
     public static void addBus(Bus bus) {
         buses.add(bus);
     }
@@ -95,7 +97,16 @@ public class Database {
     public static void addBooking(Booking booking) {
         bookings.add(booking);
     }
-    public static TreeSet<Bus> getBuses() {
+
+    public static ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    public static ArrayList<Bus> getBuses() {
         return buses;
+    }
+
+    public static ArrayList<Booking> getBookings() {
+        return bookings;
     }
 }

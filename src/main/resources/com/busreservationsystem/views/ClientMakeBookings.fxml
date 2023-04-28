@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.MakeBookingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.ClientMakeBookingsController">
     <children>
         <VBox alignment="CENTER" prefHeight="576.0" prefWidth="248.0" spacing="40.0" style="-fx-background-color: white;">
             <children>
@@ -23,25 +23,25 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
-                        <Label text="Username" />
+                        <Label fx:id="usernameLabel" text="Username" />
                      </children>
                   </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                             <children>
                                 <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="18" />
-                        <Label text="Full name" />
+                        <Label fx:id="fullNameLabel" text="Full name" />
                             </children>
                         </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
                         <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
-                        <Label text="Email" />
+                        <Label fx:id="emailLabel" text="Email" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="13.0">
                      <children>
                         <FontAwesomeIconView fill="#de924d" glyphName="MONEY" size="20" />
-                        <Label text="Balance" />
+                        <Label fx:id="balanceLabel" text="Balance" />
                      </children>
                   </HBox>
                     </children>

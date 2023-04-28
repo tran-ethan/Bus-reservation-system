@@ -7,6 +7,39 @@
   "departureDate" : [ 2023, 5, 27 ],
   "clientUsername" : "ethan312",
   "clientName" : "Ethan Tran",
+  "row" : "C",
+  "column" : 2
+},{
+  "busId" : "F0KI341",
+  "origin" : "Sherbrooke",
+  "destination" : "Toronto",
+  "price" : 24.99,
+  "departureTime" : [ 23, 59 ],
+  "departureDate" : [ 2023, 5, 27 ],
+  "clientUsername" : "chris321",
+  "clientName" : "Christopher Soussa",
   "row" : "A",
   "column" : 5
-} ]
+}, {
+  "busId" : "SDFOBW",
+  "origin" : "Laval",
+  "destination" : "NYC",
+  "price" : 13.99,
+  "departureTime" : [ 13, 0 ],
+  "departureDate" : [ 2023, 5, 30 ],
+  "clientUsername" : "chris321",
+  "clientName" : "Christopher Soussa",
+  "row" : "B",
+  "column" : 1
+},  {
+  "busId" : "SDFOBW",
+  "origin" : "Laval",
+  "destination" : "NYC",
+  "price" : 13.99,
+  "departureTime" : [ 13, 0 ],
+  "departureDate" : [ 2023, 5, 30 ],
+  "clientUsername" : "niko123",
+  "clientName" : "Nikolaos Polyhronopoulos",
+  "row" : "B",
+  "column" : 2
+}]

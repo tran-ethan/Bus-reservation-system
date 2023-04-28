@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.ClientEditProfileControllerClient">
+    <children>
+        <VBox alignment="CENTER" prefHeight="576.0" prefWidth="248.0" spacing="40.0" style="-fx-background-color: white;">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                                <Label fx:id="usernameLabel" text="Username" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="18" />
+                                <Label fx:id="fullNameLabel" text="Full name" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                                <Label fx:id="emailLabel" text="Email" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="13.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="MONEY" size="20" />
+                                <Label fx:id="balanceLabel" text="Balance" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="gotoMakeBookings" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Make booking" />
+                        <Button fx:id="gotoViewBookings" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="View bookings" />
+                        <Button fx:id="gotoEditProfile" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: EEEBD4; -fx-background-radius: 0;" text="Edit profile" />
+                        <Button fx:id="gotoManageBalance" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Manage balance" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+      <Text fill="#de924d" layoutX="337.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT PROFILE" wrappingWidth="193.166015625">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <FontAwesomeIconView fill="#de924d" glyphName="PENCIL" layoutX="301.0" layoutY="82.0" size="25" text="" wrappingWidth="21.428571701049805" />
+      <VBox alignment="CENTER" layoutX="301.0" layoutY="131.0" prefHeight="363.0" prefWidth="299.0" spacing="30.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                  <TextField fx:id="usernameField" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="20" />
+                  <TextField fx:id="nameField" prefWidth="260.0" promptText="Full name" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                  <TextField fx:id="emailField" prefWidth="260.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="KEY" size="20" />
+                  <TextField fx:id="passwordField" prefWidth="260.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+               </children>
+            </HBox>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="28.0" prefWidth="94.0" style="-fx-background-color: #de924d; -fx-graphic-text-gap: 10;" text="Save" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Text fill="#de924d" layoutX="721.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW DETAILS" wrappingWidth="200.166015625">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <VBox alignment="CENTER_LEFT" layoutX="721.0" layoutY="112.0" prefHeight="144.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                  <Label fx:id="newUsername" text="New username" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="20" />
+                  <Label fx:id="newName" text="New name" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                  <Label fx:id="newEmail" text="New email" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text fill="#de924d" layoutX="721.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OLD DETAILS" wrappingWidth="200.166015625">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <VBox alignment="CENTER_LEFT" layoutX="721.0" layoutY="373.0" prefHeight="144.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                  <Label fx:id="oldUsername" text="Old username" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="20" />
+                  <Label fx:id="oldName" text="Old name" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                  <Label fx:id="oldEmail" text="Old email" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
