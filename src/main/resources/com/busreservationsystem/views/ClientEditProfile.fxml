@@ -67,19 +67,19 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
                <children>
                   <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
-                  <TextField fx:id="usernameField" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextField fx:id="usernameField" onKeyTyped="#newCredentialsChange" prefHeight="27.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="14.0">
                <children>
                   <FontAwesomeIconView fill="#de924d" glyphName="USERS" size="20" />
-                  <TextField fx:id="nameField" prefWidth="260.0" promptText="Full name" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextField fx:id="nameField" onKeyTyped="#newCredentialsChange" prefWidth="260.0" promptText="Full name" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
-                  <TextField fx:id="emailField" prefWidth="260.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextField fx:id="emailField" onKeyTyped="#newCredentialsChange" prefWidth="260.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
