@@ -89,8 +89,8 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="withdrawField" layoutX="315.0" layoutY="341.0" prefHeight="27.0" prefWidth="162.0" promptText="Withdraw amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="depositField" layoutX="315.0" layoutY="424.0" prefHeight="27.0" prefWidth="162.0" promptText="Deposit amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="withdrawField" layoutX="315.0" layoutY="341.0" onKeyTyped="#newBalanceChange" prefHeight="27.0" prefWidth="162.0" promptText="Withdraw amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="depositField" layoutX="315.0" layoutY="424.0" onKeyTyped="#newBalanceChange" prefHeight="27.0" prefWidth="162.0" promptText="Deposit amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
       <Button fx:id="withdraw" layoutX="505.0" layoutY="338.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #de924d;" text="Withdraw" textFill="WHITE" />
       <Button fx:id="deposit" layoutX="505.0" layoutY="421.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #de924d;" text="Deposit" textFill="WHITE" />
     </children>
