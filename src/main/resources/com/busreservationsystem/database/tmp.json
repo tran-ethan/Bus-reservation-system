@@ -7,7 +7,7 @@
   "departureDate" : [ 2023, 5, 6 ],
   "arrivalTime" : [ 15, 0 ],
   "departureTime" : [ 10, 0 ],
-  "seats" : [ [ true, true, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ true, false, false, false ], [ true, false, false, false ], [ true, true, false, true ] ]
+  "seats" : [ [ true, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 }, {
   "id" : "1",
   "ticketPrice" : 20.0,

@@ -32,7 +32,7 @@ public class Booking implements Comparable<Booking> {
 
 
     public Booking() {}
-    public Booking(Bus bus, Client client, Seat seat) {
+    public Booking(Bus bus, Client client, char row, int column) {
         this.busId = bus.getId();
         this.origin = bus.getOrigin();
         this.destination = bus.getDestination();
@@ -41,8 +41,8 @@ public class Booking implements Comparable<Booking> {
         this.departureTime.set(bus.getDepartureTimeValue());
         this.clientUsername = client.getUsername();
         this.clientName = client.getFullName();
-        this.row = seat.getRow();
-        this.column = seat.getColumn();
+        this.row = row;
+        this.column = column;
     }
 
     public String getBusId() {

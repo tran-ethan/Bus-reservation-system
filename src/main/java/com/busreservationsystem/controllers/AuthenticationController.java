@@ -41,7 +41,7 @@ public class AuthenticationController extends ClientController {
             if (username.equals(client.getUsername()) && password.equals(client.getPassword())) {
                 Database.setCurrentClient(client);
                 loadFXML("ClientMakeBookings");
-                break;
+                return;
             }
         }
     }

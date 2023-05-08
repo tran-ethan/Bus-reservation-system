@@ -63,7 +63,7 @@ public class ClientManageBalanceController extends ClientController implements I
 
     /**
      * Executes a transaction, either withdraw or deposit on client, based on the button clicked.
-     * @param event Source of the button event. Determines whether it is a withdrawal or deposit.
+     * @param event Source of the event - Determines whether it is a withdrawal or deposit.
      */
     @FXML
     void makeTransaction(ActionEvent event) {

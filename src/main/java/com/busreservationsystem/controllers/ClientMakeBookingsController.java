@@ -159,6 +159,8 @@ public class ClientMakeBookingsController extends ClientController implements In
 
     @FXML
     private void makeBooking(ActionEvent event) {
-
+        Bus bus = table.getSelectionModel().getSelectedItem();
+        Database.setCurrentBus(bus);
+        loadFXML("ClientSeatSelection");
     }
 }

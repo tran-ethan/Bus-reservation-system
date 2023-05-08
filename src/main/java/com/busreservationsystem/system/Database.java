@@ -7,7 +7,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The Database class embodies a database system to keep track of all
@@ -23,9 +26,10 @@ public class Database {
     private final static ArrayList<Admin> admins = new ArrayList<>();
     private final static ArrayList<Bus> buses = new ArrayList<>();
     private final static ArrayList<Booking> bookings = new ArrayList<>();
-
     private static Admin currentAdmin = null;
     private static Client currentClient = null;
+    private static Bus currentBus = null;
+
     /**
      * Constructor for the Database.
      * Fills all according Lists according to JSON files specified.
@@ -41,6 +45,32 @@ public class Database {
         loadJson(busJSON, buses, Bus.class);
         loadJson(clientsJSON, clients, Client.class);
         loadJson(bookingsJSON, bookings, Booking.class);
+
+        // Temp bookings test
+//        Bus bus = new Bus("ABC10", 100, "Montreal", "NYC", LocalDate.of(2023, 5, 6),
+//                LocalTime.of(10, 0),
+//                LocalTime.of(15, 0),
+//                Status.ON_TIME, new boolean[10][4]);
+//
+//        Bus bus1 = new Bus("1", 20.0, "City A", "City B",
+//                LocalDate.of(2023, 5, 6),
+//                LocalTime.of(10, 0),
+//                LocalTime.of(14, 0),
+//                Status.ON_TIME, new boolean[10][4]);
+//
+//        Bus bus2 = new Bus("2", 15.0, "City C", "City D",
+//                LocalDate.of(2023, 5, 7),
+//                LocalTime.of(9, 0),
+//                LocalTime.of(13, 0),
+//                Status.DELAYED, new boolean[10][4]);
+//
+//        // Create an ArrayList of buses
+//        ArrayList<Bus> buses = new ArrayList<>();
+//        buses.add(bus);
+//        buses.add(bus1);
+//        buses.add(bus2);
+//
+//        writeJson("tmp", buses);
     }
 
     /**
@@ -112,6 +142,14 @@ public class Database {
         bookings.add(booking);
     }
 
+    public static Bus getCurrentBus() {
+        return currentBus;
+    }
+
+    public static void setCurrentBus(Bus currentBuse) {
+        Database.currentBus = currentBuse;
+    }
+
     public static ArrayList<Client> getClients() {
         return clients;
     }
@@ -120,7 +158,9 @@ public class Database {
         return buses;
     }
 
-    public static ArrayList<Booking> getBookings() {
-        return bookings;
+    public static List<Booking> getBookings() {
+        return bookings.stream()
+                .filter(booking -> booking.getClientUsername().equals(currentClient.getUsername()))
+                .collect(Collectors.toList());
     }
 }

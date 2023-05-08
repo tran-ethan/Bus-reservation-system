@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.ClientSeatSelectionController">
+    <children>
+      <Button layoutX="274.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent;">
+         <graphic>
+            <FontAwesomeIconView fill="#de924d" glyphName="LONG_ARROW_LEFT" size="30" />
+         </graphic>
+      </Button>
+        <VBox alignment="CENTER" prefHeight="576.0" prefWidth="248.0" spacing="40.0" style="-fx-background-color: white;">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="BUS" size="20" />
+                                <Label fx:id="busIdLabel" text="ID" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="26.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="MAP_MARKER" size="18" />
+                                <Label fx:id="departureLabel" text="Departure" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="MAP_PIN" size="20" />
+                                <Label fx:id="destinationLabel" text="Destination" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="CALENDAR" size="20" />
+                                <Label fx:id="dateLabel" text="Date" />
+                            </children>
+                        </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                     <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="USD" size="20" />
+                        <Label fx:id="priceLabel" text="Ticket price" />
+                     </children>
+                  </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
+      <GridPane fx:id="seatPane" alignment="CENTER_LEFT" layoutX="707.0" layoutY="55.0" prefHeight="467.0" prefWidth="260.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="109.0" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="55.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <MaterialIconView fx:id="A1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" />
+            <MaterialIconView fx:id="A2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" />
+            <MaterialIconView fx:id="A3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" />
+            <MaterialIconView fx:id="A4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" />
+            <MaterialIconView fx:id="B1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="1" />
+            <MaterialIconView fx:id="B2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <MaterialIconView fx:id="B3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <MaterialIconView fx:id="B4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <MaterialIconView fx:id="C1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="2" />
+            <MaterialIconView fx:id="C2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <MaterialIconView fx:id="C3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <MaterialIconView fx:id="C4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <MaterialIconView fx:id="D1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="3" />
+            <MaterialIconView fx:id="D2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <MaterialIconView fx:id="D3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <MaterialIconView fx:id="D4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <MaterialIconView fx:id="E1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="4" />
+            <MaterialIconView fx:id="E2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <MaterialIconView fx:id="E3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <MaterialIconView fx:id="E4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <MaterialIconView fx:id="F1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="5" />
+            <MaterialIconView fx:id="F2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <MaterialIconView fx:id="F3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <MaterialIconView fx:id="F4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <MaterialIconView fx:id="G1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="6" />
+            <MaterialIconView fx:id="G2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <MaterialIconView fx:id="G3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <MaterialIconView fx:id="G4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <MaterialIconView fx:id="H1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="7" />
+            <MaterialIconView fx:id="H2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <MaterialIconView fx:id="H3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <MaterialIconView fx:id="H4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <MaterialIconView fx:id="I1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="8" />
+            <MaterialIconView fx:id="I2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <MaterialIconView fx:id="I3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <MaterialIconView fx:id="I4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <MaterialIconView fx:id="J1" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.rowIndex="9" />
+            <MaterialIconView fx:id="J2" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <MaterialIconView fx:id="J3" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <MaterialIconView fx:id="J4" fill="#de924d" glyphName="EVENT_SEAT" onMouseClicked="#selectSeat" size="40" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" layoutX="349.0" layoutY="197.0" prefHeight="40.0" prefWidth="248.0" spacing="50.0">
+         <children>
+            <MaterialIconView fill="#de914e" glyphName="EVENT_SEAT" size="40" />
+            <MaterialIconView fill="#de905080" glyphName="PERSON" size="40" />
+            <MaterialIconView fill="#de5050" glyphName="EVENT_SEAT" size="40" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="343.0" layoutY="237.0" prefHeight="17.0" prefWidth="260.0" spacing="36.0">
+         <children>
+            <Label text="Available" />
+            <Label text="Unavailable" />
+            <Label text="Selected" />
+         </children>
+      </HBox>
+      <VBox layoutX="678.0" layoutY="63.0" prefHeight="438.0" prefWidth="19.0" spacing="19.0">
+         <children>
+            <Label text="A">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="B">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="C">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="D">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="E">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="F">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="G">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="H">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="I">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="J">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="720.0" layoutY="27.0" text="1">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="777.0" layoutY="27.0" text="2">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="871.0" layoutY="27.0" text="3">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="926.0" layoutY="27.0" text="4">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="398.0" layoutY="411.0" mnemonicParsing="false" onAction="#makeBooking" prefHeight="47.0" prefWidth="150.0" style="-fx-background-color: #de924d; -fx-background-radius: 10; -fx-graphic-text-gap: 10;" text="Book" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="BRIEFCASE" size="15" />
+         </graphic></Button>
+      <HBox alignment="CENTER" layoutX="343.0" layoutY="364.0" prefHeight="28.0" prefWidth="260.0" spacing="5.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="totalPriceLabel" text="0.0$">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

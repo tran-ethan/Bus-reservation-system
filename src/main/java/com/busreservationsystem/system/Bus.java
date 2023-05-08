@@ -18,10 +18,11 @@ public class Bus implements Comparable<Bus> {
     private final ObjectProperty<LocalTime> arrivalTime = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> departureTime = new SimpleObjectProperty<>();
 
-    public Bus() {
+    private boolean[][] seats;
 
-    }
-    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status) {
+    public Bus() {}
+
+    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status, boolean[][] seats) {
         this.id = id;
         this.ticketPrice = ticketPrice;
         this.origin = origin;
@@ -30,6 +31,7 @@ public class Bus implements Comparable<Bus> {
         this.departureDate.set(departureDate);
         this.departureTime.set(departureTime);
         this.arrivalTime.set(arrivalTime);
+        this.seats = seats;
     }
 
     public String getId() {
@@ -113,6 +115,14 @@ public class Bus implements Comparable<Bus> {
     }
     public void setArrivalTime(LocalTime arrivalTime) {
         this.arrivalTime.set(arrivalTime);
+    }
+
+    public void setSeats(boolean[][] seats) {
+        this.seats = seats;
+    }
+
+    public boolean[][] getSeats() {
+        return seats;
     }
 
     @Override
