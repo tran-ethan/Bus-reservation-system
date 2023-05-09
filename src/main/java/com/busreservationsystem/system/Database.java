@@ -7,9 +7,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -45,6 +45,7 @@ public class Database {
         loadJson(busJSON, buses, Bus.class);
         loadJson(clientsJSON, clients, Client.class);
         loadJson(bookingsJSON, bookings, Booking.class);
+        loadJson(adminJSON, admins, Admin.class);
 
         // Temp bookings test
 //        Bus bus = new Bus("ABC10", 100, "Montreal", "NYC", LocalDate.of(2023, 5, 6),
@@ -146,6 +147,14 @@ public class Database {
         return currentBus;
     }
 
+    public static Bus getBusFromId(String busId) throws NoSuchElementException {
+        for (Bus bus: buses) {
+            if (bus.getId().equals(busId)) {
+                return bus;
+            }
+        }
+        throw new NoSuchElementException("No bus with ID: " + busId);
+    }
     public static void setCurrentBus(Bus currentBuse) {
         Database.currentBus = currentBuse;
     }
@@ -154,13 +163,29 @@ public class Database {
         return clients;
     }
 
+    public static ArrayList<Admin> getAdmins() {
+        return admins;
+    }
+
     public static ArrayList<Bus> getBuses() {
         return buses;
     }
 
-    public static List<Booking> getBookings() {
+    public static List<Booking> getCurrentClientBookings() {
         return bookings.stream()
                 .filter(booking -> booking.getClientUsername().equals(currentClient.getUsername()))
                 .collect(Collectors.toList());
+    }
+
+    public static List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public static void removeBooking(Booking booking) {
+        bookings.remove(booking);
+    }
+
+    public static void removeClient(Client client) {
+        clients.remove(client);
     }
 }

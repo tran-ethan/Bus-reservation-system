@@ -1,5 +1,6 @@
 package com.busreservationsystem.controllers;
 
+import com.busreservationsystem.system.Admin;
 import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
@@ -41,6 +42,13 @@ public class AuthenticationController extends ClientController {
             if (username.equals(client.getUsername()) && password.equals(client.getPassword())) {
                 Database.setCurrentClient(client);
                 loadFXML("ClientMakeBookings");
+                return;
+            }
+        }
+        for (Admin admin: Database.getAdmins()) {
+            if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
+                Database.setCurrentAdmin(admin);
+                loadFXML("AdminManageBuses");
                 return;
             }
         }

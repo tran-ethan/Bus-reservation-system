@@ -12,6 +12,8 @@ package com.busreservationsystem.system;
 
 public class Admin extends User {
 
+    public Admin() {}
+
     public Admin(String fullName, String username, String password, String email) {
         super(fullName, username, password, email);
     }

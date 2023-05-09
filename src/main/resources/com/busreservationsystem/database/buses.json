@@ -9,7 +9,7 @@
   "departureTime" : [ 10, 0 ],
   "seats" : [ [ true, true, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ true, false, false, false ], [ true, false, false, false ], [ true, true, false, true ] ]
 }, {
-  "id" : "1",
+  "id" : "QP20FN3",
   "ticketPrice" : 20.0,
   "origin" : "City A",
   "destination" : "City B",
@@ -19,13 +19,13 @@
   "departureTime" : [ 10, 0 ],
   "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 }, {
-  "id" : "2",
+  "id" : "DPSB009",
   "ticketPrice" : 15.0,
-  "origin" : "City C",
-  "destination" : "City D",
+  "origin" : "Laval",
+  "destination" : "Toronto",
   "status" : "DELAYED",
   "departureDate" : [ 2023, 5, 7 ],
-  "arrivalTime" : [ 13, 0 ],
+  "arrivalTime" : [ 15, 30 ],
   "departureTime" : [ 9, 0 ],
   "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 } ]

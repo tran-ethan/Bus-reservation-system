@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.AdminManageClientsController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="576.0" prefWidth="248.0" spacing="40.0" style="-fx-background-color: white;">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="ID_CARD" size="18" />
+                                <Label fx:id="usernameLabel" text="Username" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="USER" size="20" />
+                                <Label fx:id="fullNameLabel" text="Full Name" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="ENVELOPE" size="20" />
+                                <Label fx:id="emailLabel" text="Email" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="ID_BADGE" size="20" />
+                                <Label text="Admin" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="gotoManageBuses" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Manage buses" />
+                        <Button fx:id="gotoManageClients" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: EEEBD4; -fx-background-radius: 0;" text="Manage clients" />
+                        <Button fx:id="gotoManageBookings" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Manage bookings" />
+                        <Button fx:id="gotoEditProfile" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Edit profile" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+      <TableView fx:id="table" editable="true" layoutX="289.0" layoutY="113.0" prefHeight="433.0" prefWidth="697.0" stylesheets="@tableview.css">
+         <columns>
+            <TableColumn fx:id="usernameCol" prefWidth="25.0" text="Username" />
+            <TableColumn fx:id="fullNameCol" prefWidth="25.0" text="Full Name" />
+            <TableColumn fx:id="emailCol" prefWidth="25.0" text="Email" />
+            <TableColumn fx:id="balanceCol" prefWidth="25.0" text="Balance" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="edit" layoutX="735.0" layoutY="46.0" mnemonicParsing="false" onAction="#editClient" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Edit" textFill="WHITE" />
+      <Button fx:id="delete" layoutX="876.0" layoutY="46.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Delete" textFill="WHITE" />
+    </children>
+</AnchorPane>

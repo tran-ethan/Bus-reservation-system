@@ -1,6 +1,7 @@
 package com.busreservationsystem.controllers;
 
 import com.busreservationsystem.system.Booking;
+import com.busreservationsystem.system.Bus;
 import com.busreservationsystem.system.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +20,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ClientViewBookingsControllerClient extends ClientMakeBookingsController implements Initializable {
+
+public class ClientViewBookingsController extends ClientMakeBookingsController implements Initializable {
 
     @FXML
     private TableView<Booking> table;
@@ -90,7 +92,7 @@ public class ClientViewBookingsControllerClient extends ClientMakeBookingsContro
         rowCol.setCellValueFactory(new PropertyValueFactory<>("row"));
         colCol.setCellValueFactory(new PropertyValueFactory<>("column"));
         // Set table values according to database
-        ObservableList<Booking> bookings = FXCollections.observableArrayList(Database.getBookings());
+        ObservableList<Booking> bookings = FXCollections.observableArrayList(Database.getCurrentClientBookings());
         table.setItems(bookings);
     }
 
@@ -99,8 +101,22 @@ public class ClientViewBookingsControllerClient extends ClientMakeBookingsContro
 
     }
 
+    /**
+     * Handles the logic for a user cancelling a booking.
+     * Opens bus seating for cancelled seat and refunds money to the Client.
+     *
+     * @param event Source of event. Is called when user clicks on Cancel button.
+     */
     @FXML
     void cancelBooking(ActionEvent event) {
-
+        Booking booking = table.getSelectionModel().getSelectedItem();
+        Bus bus = Database.getBusFromId(booking.getBusId());
+        // Get row, col, as int that is 0-indexed
+        int row = booking.getRow() - 'A';
+        int col = booking.getColumn() - 1;
+        bus.getSeats()[row][col] = false;
+        Database.removeBooking(booking);
+        Database.getCurrentClient().deposit(booking.getPrice());
+        loadFXML("ClientViewBookings");
     }
 }
