@@ -29,55 +29,31 @@ import java.util.ResourceBundle;
 public class AdminManageBusesController extends AdminController implements Initializable {
 
     @FXML
-    private TableColumn<Bus, LocalTime> arrivalCol;
+    private TableView<Bus> table;
+
+    @FXML
+    private TextField originField, destinationField, idField;
+
+    @FXML
+    private TableColumn<Bus, LocalTime> arrivalCol, departureCol;
 
     @FXML
     private TableColumn<Bus, LocalDate> dateCol;
 
     @FXML
-    private TextField dateField;
-
-    @FXML
-    protected ChoiceBox<String> dateSortField;
-
-    @FXML
-    private TableColumn<Bus, LocalTime> departureCol;
-
-    @FXML
-    private TextField departureField;
-
-    @FXML
-    private TableColumn<Bus, String> destinationCol;
-
-    @FXML
-    private TextField destinationField;
-
-    @FXML
-    private TableColumn<Bus, String> idCol;
-
-    @FXML
-    private TextField idField;
-
-    @FXML
-    private TableColumn<Bus, String> originCol;
-
-    @FXML
-    protected ChoiceBox<String> priceSortField;
+    private TableColumn<Bus, String> destinationCol, idCol, originCol;
 
     @FXML
     private TableColumn<Bus, Status> statusCol;
 
     @FXML
-    private Button submit;
-
-    @FXML
-    private Button book;
-
-    @FXML
-    private TableView<Bus> table;
-
-    @FXML
     private TableColumn<Bus, Integer> ticketPriceCol;
+
+    @FXML
+    protected ChoiceBox<String> dateSortField;
+
+    @FXML
+    protected ChoiceBox<String> priceSortField;
 
 
     @Override
@@ -154,13 +130,34 @@ public class AdminManageBusesController extends AdminController implements Initi
         }
     }
 
+    /**
+     * Performs filter operation on ObservableList of buses. Will only filter attributes that are provided.
+     * If an attribute field is not provided, filter will ignore that field.
+     * Will display on TableView buses whose fields match all the corresponding fields ID, Origin, Destination.
+     *
+     * @param event Source of event: is called when Admin clicks on "Search" button.
+     */
     @FXML
     private void submitSearch(ActionEvent event) {
+        String busId = idField.getText();
+        String origin = originField.getText();
+        String destination = destinationField.getText();
 
+        // Filter bus based on non-empty attributes
+        ObservableList<Bus> buses = FXCollections.observableArrayList();
+        for (Bus bus: Database.getBuses()) {
+            if ((busId.isEmpty() || bus.getId().equals(busId))
+                    && (origin.isEmpty()|| bus.getOrigin().equals(origin))
+                    && (destination.isEmpty() || bus.getDestination().equals(destination))) {
+                buses.add(bus);
+            }
+        }
+
+        table.setItems(buses);
     }
 
     @FXML
-    private void editBooking(ActionEvent event) {
+    private void editBus(ActionEvent event) {
         Bus bus = table.getSelectionModel().getSelectedItem();
         Database.setCurrentBus(bus);
         loadFXML("AdminEditBus");

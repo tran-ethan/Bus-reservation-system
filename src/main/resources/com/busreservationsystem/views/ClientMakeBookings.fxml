@@ -83,9 +83,8 @@
                </font>
             </Text>
             <TextField fx:id="idField" prefHeight="27.0" prefWidth="162.0" promptText="Bus ID" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="departureField" prefHeight="27.0" prefWidth="162.0" promptText="Departure" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="originField" prefHeight="27.0" prefWidth="162.0" promptText="Origin" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
             <TextField fx:id="destinationField" prefHeight="27.0" prefWidth="162.0" promptText="Destination" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="dateField" prefHeight="27.0" prefWidth="162.0" promptText="Departure" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="464.0" layoutY="93.0" prefHeight="56.0" prefWidth="517.0" spacing="40.0">
@@ -110,7 +109,7 @@
                   <ChoiceBox fx:id="dateSortField" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent; -fx-border-color: #de924d; -fx-border-width: 0px 0px 2px 0px;" />
                </children>
             </HBox>
-            <Button fx:id="submit" mnemonicParsing="false" onAction="#submitSearch" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #de924d;" text="Submit" textFill="WHITE" />
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#submitSearch" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #de924d;" text="Search" textFill="WHITE" />
             <Button fx:id="book" mnemonicParsing="false" onAction="#makeBooking" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #de924d;" text="Book" textFill="WHITE" />
          </children>
       </HBox>

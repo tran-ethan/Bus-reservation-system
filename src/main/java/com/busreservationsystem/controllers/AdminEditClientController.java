@@ -1,5 +1,6 @@
 package com.busreservationsystem.controllers;
 
+import com.busreservationsystem.system.Booking;
 import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
@@ -38,12 +39,23 @@ public class AdminEditClientController extends AdminController implements Initia
 
     @FXML
     void save(ActionEvent event) {
+        String newUsername = usernameField.getText();
+        String username = oldUsername.getText();
+
         // Update user credentials
         client.setUsername(usernameField.getText());
         client.setFullName(nameField.getText());
         client.setEmail(emailField.getText());
         client.setBalance(Double.parseDouble(balanceField.getText()));
         client.setPassword(passwordField.getText());
+
+        // Update all bookings according to new username
+        for (Booking booking: Database.getBookings()) {
+            if (booking.getClientUsername().equals(username)) {
+                booking.setClientUsername(newUsername);
+            }
+        }
+
         // Reloads page to update left panel
         loadFXML("AdminManageClients");
     }

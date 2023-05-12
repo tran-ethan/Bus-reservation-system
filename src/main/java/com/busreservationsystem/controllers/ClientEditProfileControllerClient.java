@@ -1,5 +1,6 @@
 package com.busreservationsystem.controllers;
 
+import com.busreservationsystem.system.Booking;
 import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
@@ -57,24 +58,37 @@ public class ClientEditProfileControllerClient extends ClientController implemen
 
     /**
      * Handles changing user credentials, handles appropriate error messages for user interaction.
-     * Is called when "Save" button is clicked
-     * @param event The source of the event.
+     * Updates all the bookings to link to the current Client.
+     *
+     * @param event The source of event: is called when "Save" button is clicked
      */
     @FXML
     void save(ActionEvent event) {
+        String newUsername = usernameField.getText();
+        String username = oldUsername.getText();
+
         // Update user credentials
-        client.setUsername(usernameField.getText());
+        client.setUsername(newUsername);
         client.setFullName(nameField.getText());
         client.setEmail(emailField.getText());
         client.setPassword(passwordField.getText());
+
+        // Change all bookings to match new user credentials
+        for (Booking booking: Database.getBookings()) {
+            if (booking.getClientUsername().equals(username)) {
+                booking.setClientUsername(newUsername);
+            }
+        }
+
         // Reloads page to update left panel
         loadFXML("ClientEditProfile");
     }
 
     /**
-     * Handles the text change event for the text fields - is called everytime a character is inputted into a field.
+     * Handles the text change event logic for the text fields.
      * Updates the corresponding labels based on the source of the field that has been changed.
-     * @param event The source of the event.
+     *
+     * @param event The source of the event - is called everytime a character is inputted into a field.
      */
     @FXML
     void newCredentialsChange(KeyEvent event) {

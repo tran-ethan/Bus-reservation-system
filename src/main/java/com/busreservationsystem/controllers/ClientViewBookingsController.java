@@ -21,12 +21,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
-public class ClientViewBookingsController extends ClientMakeBookingsController implements Initializable {
+public class ClientViewBookingsController extends ClientController implements Initializable {
+
 
     @FXML
     private TableView<Booking> table;
-    @FXML
-    private TableColumn<Booking, LocalTime> arrivalCol;
 
     @FXML
     private TableColumn<Booking, LocalDate> dateCol;
@@ -35,26 +34,16 @@ public class ClientViewBookingsController extends ClientMakeBookingsController i
     private TableColumn<Booking, LocalTime> departureCol;
 
     @FXML
-    private TableColumn<Booking, String> destinationCol;
-
-    @FXML
-    private TableColumn<Booking, String> busIdCol;
-
-    @FXML
-    private TableColumn<Booking, String> originCol;
+    private TableColumn<Booking, String> destinationCol, busIdCol, originCol;
 
     @FXML
     private TableColumn<Booking, Double> priceCol;
 
     @FXML
     private TableColumn<Booking, Character> rowCol;
-    @FXML
-    private TableColumn<Booking, Integer> colCol;
-    @FXML
-    private Button edit;
 
     @FXML
-    private Button cancel;
+    private TableColumn<Booking, Integer> colCol;
 
 
     @Override
@@ -91,6 +80,7 @@ public class ClientViewBookingsController extends ClientMakeBookingsController i
         });
         rowCol.setCellValueFactory(new PropertyValueFactory<>("row"));
         colCol.setCellValueFactory(new PropertyValueFactory<>("column"));
+
         // Set table values according to database
         ObservableList<Booking> bookings = FXCollections.observableArrayList(Database.getCurrentClientBookings());
         table.setItems(bookings);

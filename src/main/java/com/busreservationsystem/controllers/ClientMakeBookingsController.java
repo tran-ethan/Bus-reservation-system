@@ -24,56 +24,31 @@ import java.util.ResourceBundle;
  * including ID, origin, destination, departure time, arrival time, departure date, status, and ticket price.
  * Clients are able to search for buses and sort them according to specified fields.
  * This ability will allow clients to book a seat on the bus.
+ *
+ * @author Ethan Tran
  */
 public class ClientMakeBookingsController extends ClientController implements Initializable {
 
     @FXML
-    private TableColumn<Bus, LocalTime> arrivalCol;
+    private TableView<Bus> table;
+
+    @FXML
+    private TextField originField, destinationField, idField;
+
+    @FXML
+    private TableColumn<Bus, LocalTime> arrivalCol, departureCol;
 
     @FXML
     private TableColumn<Bus, LocalDate> dateCol;
 
     @FXML
-    private TextField dateField;
+    protected ChoiceBox<String> dateSortField, priceSortField;
 
     @FXML
-    protected ChoiceBox<String> dateSortField;
-
-    @FXML
-    private TableColumn<Bus, LocalTime> departureCol;
-
-    @FXML
-    private TextField departureField;
-
-    @FXML
-    private TableColumn<Bus, String> destinationCol;
-
-    @FXML
-    private TextField destinationField;
-
-    @FXML
-    private TableColumn<Bus, String> idCol;
-
-    @FXML
-    private TextField idField;
-
-    @FXML
-    private TableColumn<Bus, String> originCol;
-
-    @FXML
-    protected ChoiceBox<String> priceSortField;
+    private TableColumn<Bus, String> destinationCol, idCol, originCol;
 
     @FXML
     private TableColumn<Bus, Status> statusCol;
-
-    @FXML
-    private Button submit;
-
-    @FXML
-    private Button book;
-
-    @FXML
-    private TableView<Bus> table;
 
     @FXML
     private TableColumn<Bus, Integer> ticketPriceCol;
@@ -82,6 +57,7 @@ public class ClientMakeBookingsController extends ClientController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCredentials();
+
         // Set Cell Factory values to match
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         ticketPriceCol.setCellValueFactory(new PropertyValueFactory<>("ticketPrice"));
@@ -94,6 +70,7 @@ public class ClientMakeBookingsController extends ClientController implements In
         dateCol.setCellValueFactory(cellData -> cellData.getValue().getDepartureDate());
         dateCol.setCellFactory(new DateCellFactory());
         statusCol.setCellValueFactory(cellData -> cellData.getValue().getStatus());
+
         // Set table values according to database
         ObservableList<Bus> buses = FXCollections.observableArrayList(Database.getBuses());
         table.setItems(buses);
@@ -103,7 +80,7 @@ public class ClientMakeBookingsController extends ClientController implements In
      * Custom cell factory for the departure column in a JavaFX TableView.
      * Implements the Callback interface to provide a custom TableCell
      * class for displaying LocalTime values in the departure and
-     * arrival columns according to a Time format of 'hh:mm:ss'.
+     * arrival columns according to a Time format of 'HH:mm:ss'.
      */
     private static class TimeCellFactory implements Callback<TableColumn<Bus, LocalTime>, TableCell<Bus, LocalTime>> {
 
@@ -152,11 +129,37 @@ public class ClientMakeBookingsController extends ClientController implements In
         }
     }
 
+    /**
+     * Performs filter operation on ObservableList. Will only filter attributes that are provided.
+     * If an attribute field is not provided, filter will ignore that field.
+     * Will display on TableView buses whose fields match all the corresponding fields ID, Origin, Destination.
+     *
+     * @param event Source of event: is called when user clicks on "Search" button.
+     */
     @FXML
     private void submitSearch(ActionEvent event) {
+        String busId = idField.getText();
+        String origin = originField.getText();
+        String destination = destinationField.getText();
 
+        // Filter bus based on non-empty attributes
+        ObservableList<Bus> buses = FXCollections.observableArrayList();
+        for (Bus bus: Database.getBuses()) {
+            if ((busId.isEmpty() || bus.getId().equals(busId))
+            && (origin.isEmpty()|| bus.getOrigin().equals(origin))
+            && (destination.isEmpty() || bus.getDestination().equals(destination))) {
+                buses.add(bus);
+            }
+        }
+
+        table.setItems(buses);
     }
 
+    /**
+     * Performs the action of making a booking by setting CurrentBus so that SeatSelectionController can access bus.
+     *
+     * @param event Source of event: is called when user clicks on "Book" button.
+     */
     @FXML
     private void makeBooking(ActionEvent event) {
         Bus bus = table.getSelectionModel().getSelectedItem();

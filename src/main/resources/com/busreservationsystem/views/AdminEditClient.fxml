@@ -48,7 +48,7 @@
                 </VBox>
             </children>
         </VBox>
-        <Text fill="#de924d" layoutX="335.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT PROFILE" wrappingWidth="193.166015625">
+        <Text fill="#de924d" layoutX="335.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT CLIENT" wrappingWidth="193.166015625">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
