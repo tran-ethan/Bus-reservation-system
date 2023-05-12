@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -40,7 +41,7 @@ public class ClientSeatSelectionController extends ClientController implements I
         busIdLabel.setText(bus.getId());
         departureLabel.setText(bus.getOrigin());
         destinationLabel.setText(bus.getDestination());
-        dateLabel.setText(String.valueOf(bus.getDepartureDateValue()));
+        dateLabel.setText(bus.getDepartureDateValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
         priceLabel.setText(String.format("%.2f$", bus.getTicketPrice()));
 
         // Display unavailable seats by changing icon and color

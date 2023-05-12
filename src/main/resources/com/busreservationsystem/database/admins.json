@@ -1,7 +1,7 @@
 [ {
   "fullName" : "Foo Bar",
   "username" : "foobar",
-  "password" : "adminpassword",
+  "password" : "a",
   "email" : "foobar@hotmail.com"
 }, {
   "fullName" : "John",

@@ -29,6 +29,7 @@ public class Database {
     private static Admin currentAdmin = null;
     private static Client currentClient = null;
     private static Bus currentBus = null;
+    private static Booking currentBooking = null;
 
     /**
      * Constructor for the Database.
@@ -123,12 +124,24 @@ public class Database {
         currentClient = client;
     }
 
+    public static void setCurrentBooking(Booking booking) {
+        currentBooking = booking;
+    }
+
     public static Admin getCurrentAdmin() {
         return currentAdmin;
     }
 
     public static Client getCurrentClient() {
         return currentClient;
+    }
+
+    public static Bus getCurrentBus() {
+        return currentBus;
+    }
+
+    public static Booking getCurrentBooking() {
+        return currentBooking;
     }
 
     public static void addClient(Client client) {
@@ -143,10 +156,6 @@ public class Database {
         bookings.add(booking);
     }
 
-    public static Bus getCurrentBus() {
-        return currentBus;
-    }
-
     public static Bus getBusFromId(String busId) throws NoSuchElementException {
         for (Bus bus: buses) {
             if (bus.getId().equals(busId)) {
@@ -155,9 +164,21 @@ public class Database {
         }
         throw new NoSuchElementException("No bus with ID: " + busId);
     }
-    public static void setCurrentBus(Bus currentBuse) {
-        Database.currentBus = currentBuse;
+
+    public static Client getClientFromUsername(String username) throws NoSuchElementException {
+        for (Client client: clients) {
+            if (client.getUsername().equals(username)) {
+                return client;
+            }
+        }
+        throw new NoSuchElementException("No client with username: " + username);
     }
+
+    public static void setCurrentBus(Bus bus) {
+        Database.currentBus = bus;
+    }
+
+
 
     public static ArrayList<Client> getClients() {
         return clients;

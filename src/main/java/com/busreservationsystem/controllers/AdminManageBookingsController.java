@@ -2,7 +2,6 @@ package com.busreservationsystem.controllers;
 
 import com.busreservationsystem.system.Admin;
 import com.busreservationsystem.system.Booking;
-import com.busreservationsystem.system.Bus;
 import com.busreservationsystem.system.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -101,7 +100,9 @@ public class AdminManageBookingsController extends AdminController implements In
 
     @FXML
     void editBooking(ActionEvent event) {
-
+        Booking booking = table.getSelectionModel().getSelectedItem();
+        Database.setCurrentBooking(booking);
+        loadFXML("AdminEditBooking");
     }
 
     /**
@@ -113,13 +114,12 @@ public class AdminManageBookingsController extends AdminController implements In
     @FXML
     void cancelBooking(ActionEvent event) {
         Booking booking = table.getSelectionModel().getSelectedItem();
-        Bus bus = Database.getBusFromId(booking.getBusId());
         // Get row, col, as int that is 0-indexed
         int row = booking.getRow() - 'A';
         int col = booking.getColumn() - 1;
-        bus.getSeats()[row][col] = false;
+        Database.getBusFromId(booking.getBusId()).getSeats()[row][col] = false;
         Database.removeBooking(booking);
-        Database.getCurrentClient().deposit(booking.getPrice());
-        loadFXML("ClientViewBookings");
+        Database.getClientFromUsername(booking.getClientUsername()).deposit(booking.getPrice());
+        loadFXML("AdminManageBookings");
     }
 }

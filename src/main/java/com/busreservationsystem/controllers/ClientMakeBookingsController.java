@@ -120,7 +120,7 @@ public class ClientMakeBookingsController extends ClientController implements In
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    setText(String.format(item.format(DateTimeFormatter.ofPattern("hh:mm:ss"))));
+                    setText(String.format(item.format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
                 }
             }
         }

@@ -105,7 +105,7 @@ public class AdminManageBusesController extends AdminController implements Initi
      * Custom cell factory for the departure column in a JavaFX TableView.
      * Implements the Callback interface to provide a custom TableCell
      * class for displaying LocalTime values in the departure and
-     * arrival columns according to a Time format of 'hh:mm:ss'.
+     * arrival columns according to a Time format of 'HH:mm:ss'.
      */
     private static class TimeCellFactory implements Callback<TableColumn<Bus, LocalTime>, TableCell<Bus, LocalTime>> {
 
@@ -122,7 +122,7 @@ public class AdminManageBusesController extends AdminController implements Initi
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    setText(String.format(item.format(DateTimeFormatter.ofPattern("hh:mm:ss"))));
+                    setText(String.format(item.format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
                 }
             }
         }

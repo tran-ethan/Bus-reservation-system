@@ -73,7 +73,7 @@ public class ClientViewBookingsController extends ClientMakeBookingsController i
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    setText(item.format(DateTimeFormatter.ofPattern("hh:mm:ss")));
+                    setText(item.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
                 }
             }
         });

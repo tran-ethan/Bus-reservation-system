@@ -58,7 +58,7 @@
                 </VBox>
             </children>
         </VBox>
-        <TableView fx:id="table" editable="true" layoutX="289.0" layoutY="113.0" prefHeight="433.0" prefWidth="697.0" stylesheets="@tableview.css">
+        <TableView fx:id="table" editable="true" layoutX="289.0" layoutY="113.0" prefHeight="433.0" prefWidth="697.0" stylesheets="@styles.css">
             <columns>
                 <TableColumn fx:id="busIdCol" prefWidth="25.0" text="Bus ID" />
                 <TableColumn fx:id="priceCol" prefWidth="173.0" text="Price" />
