@@ -214,4 +214,9 @@ public class Database {
         if (client == null) throw new NullPointerException("Client not selected");
         clients.remove(client);
     }
+
+    public static void removeBus(Bus bus) {
+        if (bus == null) throw new NullPointerException("Bus not selected");
+        buses.remove(bus);
+    }
 }

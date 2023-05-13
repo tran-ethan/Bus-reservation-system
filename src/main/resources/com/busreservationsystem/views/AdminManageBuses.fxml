@@ -98,6 +98,16 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="13" />
                </graphic>
             </Button>
+            <Button fx:id="add" graphicTextGap="10.0" mnemonicParsing="false" onAction="#addBus" prefHeight="33.0" prefWidth="326.0" style="-fx-background-color: #de924d;" text="Add" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="13" />
+               </graphic>
+            </Button>
+            <Button fx:id="delete" graphicTextGap="10.0" mnemonicParsing="false" onAction="#deleteBus" prefHeight="33.0" prefWidth="326.0" style="-fx-background-color: #de924d;" text="Delete" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MINUS" size="11" />
+               </graphic>
+            </Button>
          </children>
       </HBox>
     </children>

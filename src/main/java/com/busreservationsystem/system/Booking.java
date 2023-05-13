@@ -49,24 +49,46 @@ public class Booking implements Comparable<Booking> {
         return busId;
     }
 
-    public void setBusId(String busId) {
+    public void setBusId(String busId) throws IllegalArgumentException {
+        if (busId.isEmpty()) throw new IllegalArgumentException("Bus ID cannot be empty");
         this.busId = busId;
-    }
-
-    public String getOrigin() {
-        return origin;
     }
 
     public void setOrigin(String origin) {
         this.origin = origin;
     }
 
-    public String getDestination() {
-        return destination;
-    }
-
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime.set(departureTime);
+    }
+
+    public void setRow(char row) {
+        row = Character.toUpperCase(row);
+        if (row < 'A' || row > 'J') {
+            throw new IllegalArgumentException("Invalid row");
+        }
+        this.row = row;
+    }
+
+    public void setColumn(int column) {
+        if (column < 1 || column > 4) throw new IllegalArgumentException("Invalid column");
+        this.column = column;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getDestination() {
+        return destination;
     }
 
     public ObjectProperty<LocalTime> getDepartureTime() {
@@ -76,10 +98,6 @@ public class Booking implements Comparable<Booking> {
     @JsonProperty("departureTime")
     public LocalTime getDepartureTimeValue() {
         return departureTime.get();
-    }
-
-    public void setDepartureTime(LocalTime departureTime) {
-        this.departureTime.set(departureTime);
     }
 
     public ObjectProperty<LocalDate> getDepartureDate() {
@@ -115,24 +133,12 @@ public class Booking implements Comparable<Booking> {
         return row;
     }
 
-    public void setRow(char row) {
-        this.row = row;
-    }
-
     public int getColumn() {
         return column;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     @Override

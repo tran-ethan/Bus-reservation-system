@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.AdminCreateBusController">
+    <children>
+        <Button layoutX="274.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent;">
+            <graphic>
+                <FontAwesomeIconView fill="#de924d" glyphName="LONG_ARROW_LEFT" size="30" />
+            </graphic>
+        </Button>
+        <VBox alignment="CENTER" prefHeight="576.0" prefWidth="248.0" spacing="40.0" style="-fx-background-color: white;">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="BUS" size="20" />
+                                <Label fx:id="busIdLabel" text="ID" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="26.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="MAP_MARKER" size="18" />
+                                <Label fx:id="originLabel" text="Origin" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="MAP_PIN" size="20" />
+                                <Label fx:id="destinationLabel" text="Destination" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="CALENDAR" size="20" />
+                                <Label fx:id="dateLabel" text="Date" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                            <children>
+                                <FontAwesomeIconView fill="#de924d" glyphName="USD" size="20" />
+                                <Label fx:id="priceLabel" text="Ticket price" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
+        <Text fill="#de924d" layoutX="343.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE BUS" wrappingWidth="193.166015625">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Text>
+        <VBox alignment="CENTER" layoutX="297.0" layoutY="182.0" prefHeight="363.0" prefWidth="299.0" spacing="30.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="BUS" size="20" />
+                        <TextField fx:id="busIdField" onKeyTyped="#onTextChange" prefHeight="27.0" prefWidth="260.0" promptText="Bus ID" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="MAP_MARKER" size="18" />
+                        <TextField fx:id="originField" onKeyTyped="#onTextChange" prefWidth="260.0" promptText="Origin" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="MAP_PIN" size="20" />
+                        <TextField fx:id="destinationField" onKeyTyped="#onTextChange" prefWidth="260.0" promptText="Destination" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="USD" size="20" />
+                        <TextField fx:id="ticketPriceField" onKeyTyped="#onTextChange" prefWidth="260.0" promptText="Ticket Price" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="28.0" prefWidth="94.0" style="-fx-background-color: #de924d; -fx-graphic-text-gap: 10;" text="Save" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="20" />
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" layoutX="659.0" layoutY="182.0" prefHeight="310.0" prefWidth="299.0" spacing="30.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="CALENDAR" size="20" />
+                        <DatePicker fx:id="departureDateField" onAction="#dateChange" prefHeight="25.0" prefWidth="260.0" style="-fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" stylesheets="@styles.css" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <MaterialIconView fill="#de924d" glyphName="ALARM" size="20" />
+                        <TextField fx:id="departureTimeField" prefHeight="27.0" prefWidth="260.0" promptText="Departure time (hh:mm:ss)" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="21.0">
+                    <children>
+                        <MaterialIconView fill="#de924d" glyphName="ALARM" size="20" />
+                        <TextField fx:id="arrivalTimeField" prefWidth="260.0" promptText="Arrival time (hh:mm:ss)" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                    <children>
+                        <FontAwesomeIconView fill="#de924d" glyphName="REPEAT" size="20" />
+                        <ChoiceBox fx:id="statusField" prefHeight="27.0" prefWidth="260.0" style="-fx-background-color: transparent; -fx-border-color: #de924d; -fx-border-width: 0px 0px 2px 0px;" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+      <FontAwesomeIconView fill="#de924d" glyphName="PLUS" layoutX="297.0" layoutY="144.0" size="25" />
+    </children>
+</AnchorPane>

@@ -22,11 +22,15 @@ public class Bus implements Comparable<Bus> {
 
     public Bus() {}
 
-    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status, boolean[][] seats) {
-        this.id = id;
-        this.ticketPrice = ticketPrice;
-        this.origin = origin;
-        this.destination = destination;
+    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status) {
+        this(id, ticketPrice, origin, destination, departureDate, departureTime, arrivalTime, status, new boolean[10][4]);
+    }
+
+    public Bus(String id, double ticketPrice, String origin, String destination, LocalDate departureDate, LocalTime departureTime, LocalTime arrivalTime, Status status, boolean[][] seats) throws IllegalArgumentException {
+        setId(id);
+        setTicketPrice(ticketPrice);
+        setOrigin(origin);
+        setDestination(destination);
         this.status.set(status);
         this.departureDate.set(departureDate);
         this.departureTime.set(departureTime);
@@ -38,32 +42,39 @@ public class Bus implements Comparable<Bus> {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id) throws IllegalArgumentException{
+        if (id.isEmpty()) throw new IllegalArgumentException("ID cannot be empty");
+        for (Bus bus: Database.getBuses()) {
+            if (bus.getId().equals(id)) throw new IllegalArgumentException("Bus ID already exists");
+        }
         this.id = id;
+    }
+
+    public void setTicketPrice(double ticketPrice) throws IllegalArgumentException {
+        if (ticketPrice <= 0) throw new IllegalArgumentException("Invalid ticket price");
+        this.ticketPrice = ticketPrice;
+    }
+
+    public void setOrigin(String origin) throws IllegalArgumentException {
+        if (origin.isEmpty()) throw new IllegalArgumentException("Origin cannot be empty");
+        this.origin = origin;
+    }
+
+    public void setDestination(String destination) throws IllegalArgumentException {
+        if (destination.isEmpty()) throw new IllegalArgumentException("Destination cannot be empty");
+        this.destination = destination;
     }
 
     public double getTicketPrice() {
         return ticketPrice;
     }
 
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
     public String getOrigin() {
         return origin;
     }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
     public String getDestination() {
         return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public ObjectProperty<Status> getStatus() {

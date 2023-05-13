@@ -2,7 +2,7 @@ package com.busreservationsystem.system;
 
 /**
  * The Customer class represents a customer in bus reservation system
- * with the ability to search and book flights.
+ * with the ability to search and book seats on a particular bus.
  * Is subclass of User.
  *
  * @author Ethan Tran

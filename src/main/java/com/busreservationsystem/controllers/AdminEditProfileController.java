@@ -1,8 +1,6 @@
 package com.busreservationsystem.controllers;
 
 import com.busreservationsystem.system.Admin;
-import com.busreservationsystem.system.Booking;
-import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class AdminEditProfileController extends AdminController implements Initializable {
 
@@ -43,8 +42,8 @@ public class AdminEditProfileController extends AdminController implements Initi
 
     /**
      * Handles changing user credentials, handles appropriate error messages for user interaction.
-     * Is called when "Save" button is clicked
-     * @param event The source of the event.
+     *
+     * @param event The source of the event - is called when "Save" button is clicked
      */
     @FXML
     void save(ActionEvent event) {
@@ -78,13 +77,12 @@ public class AdminEditProfileController extends AdminController implements Initi
             String methodName = e.getStackTrace()[0].getMethodName();
             alert.setTitle(e.getMessage());
 
-            String error;
-            switch (e.getMessage()) {
-                case "Username is already taken" -> error = "Please choose another name. This one already exists.";
-                case "Invalid email format" -> error = "Please enter a valid email address.";
-                case "Invalid name" -> error = "Please enter your full name - must contain both first and last name";
-                default -> error = "Please fill all fields before saving.";
-            }
+            String error = switch (e.getMessage()) {
+                case "Username is already taken" -> "Please choose another name. This one already exists.";
+                case "Invalid email format" -> "Please enter a valid email address.";
+                case "Invalid name" -> "Please enter your full name - must contain both first and last name";
+                default -> "Please fill all fields before saving.";
+            };
             alert.setContentText(error);
 
             /* If one field is invalid after the username, reset all credentials that have been set before that
@@ -103,9 +101,10 @@ public class AdminEditProfileController extends AdminController implements Initi
     }
 
     /**
-     * Handles the text change event for the text fields - is called everytime a character is inputted into a field.
+     * Handles the text change event for the text fields
      * Updates the corresponding labels based on the source of the field that has been changed.
-     * @param event The source of the event.
+     *
+     * @param event Source of the event - is called everytime a character is inputted into a field.
      */
     @FXML
     void newCredentialsChange(KeyEvent event) {

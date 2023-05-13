@@ -84,13 +84,13 @@ public class ClientEditProfileControllerClient extends ClientController implemen
             String methodName = e.getStackTrace()[0].getMethodName();
             alert.setTitle(e.getMessage());
 
-            String error;
-            switch (e.getMessage()) {
-                case "Username is already taken" -> error = "Please choose another name. This one already exists.";
-                case "Invalid email format" -> error = "Please enter a valid email address.";
-                case "Invalid name" -> error = "Please enter your full name - must contain both first and last name";
-                default -> error = "Please fill all fields before saving.";
-            }
+
+            String error = switch (e.getMessage()) {
+                case "Username is already taken" -> "Please choose another name. This one already exists.";
+                case "Invalid email format" -> "Please enter a valid email address.";
+                case "Invalid name" -> "Please enter your full name - must contain both first and last name";
+                default -> "Please fill all fields before saving.";
+            };
             alert.setContentText(error);
 
             /* If one field is invalid after the username, reset all credentials that have been set before that

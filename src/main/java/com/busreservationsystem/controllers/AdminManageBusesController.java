@@ -169,4 +169,38 @@ public class AdminManageBusesController extends AdminController implements Initi
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void addBus(ActionEvent event) {
+        loadFXML("AdminCreateBus");
+    }
+
+    /**
+     * Handles logic for deleting a bus.
+     * Deletes all the bookings that the bus is linked to.
+     *
+     * @param event Source of event: is called when Admin clicks on "Delete"
+     */
+    @FXML
+    private void deleteBus(ActionEvent event) {
+        try {
+            Bus bus = table.getSelectionModel().getSelectedItem();
+            Database.removeBus(bus);
+            String busId = bus.getId();
+            Database.getBookings().removeIf(booking -> booking.getBusId().equals(busId));
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deleted bus successfully");
+            alert.setContentText(String.format("Bus with ID '%s' has been deleted.", busId));
+
+            alert.showAndWait();
+            loadFXML("AdminManageBuses");
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(e.getMessage());
+            alert.setContentText("Please select a bus to delete.");
+
+            alert.showAndWait();
+        }
+    }
 }
