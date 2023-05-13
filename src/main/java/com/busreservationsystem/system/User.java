@@ -1,6 +1,8 @@
 package com.busreservationsystem.system;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The User class represents a user entity in bus reservation system.
  * Is superclass of Admin and Customer.
@@ -24,15 +26,11 @@ public abstract class User {
      * @param password Password of user.
      * @param email Email address of user.
      */
-    public User(String fullName, String username, String password, String email) {
-        this.fullName = fullName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
-    public String getFullName() {
-        return fullName;
+    public User(String fullName, String username, String password, String email) throws IllegalArgumentException {
+        setFullName(fullName);
+        setUsername(username);
+        setPassword(password);
+        setEmail(email);
     }
 
     /**
@@ -45,10 +43,6 @@ public abstract class User {
         if (fullName.isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
         if (fullName.split(" ").length < 2) throw new IllegalArgumentException("Invalid name");
         this.fullName = fullName;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     /**
@@ -68,18 +62,9 @@ public abstract class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-
     public void setPassword(String password) throws IllegalArgumentException {
         if (password.isEmpty()) throw new IllegalArgumentException("Password cannot be empty");
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     /**
@@ -88,16 +73,34 @@ public abstract class User {
      * @param email Email address to be set
      * @throws IllegalArgumentException if the email is null, empty, or has an invalid format
      */
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalArgumentException {
         if (email.isEmpty()) throw new IllegalArgumentException("Email cannot be empty");
         String pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         if (!email.matches(pattern)) throw new IllegalArgumentException("Invalid email format");
         this.email = email;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+
     /**
      * Returns the type of User as a String.
      * @return Type
      */
+    @JsonIgnore
     public abstract String getType();
 }

@@ -9,7 +9,7 @@
   "clientName" : "Ethan Tran",
   "row" : "C",
   "column" : 2
-},{
+}, {
   "busId" : "F0KI341",
   "origin" : "Sherbrooke",
   "destination" : "Toronto",
@@ -31,7 +31,7 @@
   "clientName" : "Christopher Soussa",
   "row" : "B",
   "column" : 1
-},  {
+}, {
   "busId" : "SDFOBW",
   "origin" : "Laval",
   "destination" : "NYC",
@@ -42,4 +42,4 @@
   "clientName" : "Nikolaos Polyhronopoulos",
   "row" : "B",
   "column" : 2
-}]
+} ]

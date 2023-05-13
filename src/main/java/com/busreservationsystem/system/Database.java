@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 /**
  * The Database class embodies a database system to keep track of all
  * Users, Admins, Buses, and Bookings.
+ * Everything in this class is public and static in order for all controllers to be able to access fields
+ * and variables without instantiating Database, as all controllers will point to the same one.
  *
  * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
@@ -26,10 +28,17 @@ public class Database {
     private final static ArrayList<Admin> admins = new ArrayList<>();
     private final static ArrayList<Bus> buses = new ArrayList<>();
     private final static ArrayList<Booking> bookings = new ArrayList<>();
-    private static Admin currentAdmin = null;
-    private static Client currentClient = null;
-    private static Bus currentBus = null;
-    private static Booking currentBooking = null;
+
+    private static Admin currentAdmin;
+    private static Client currentClient;
+    private static Bus currentBus;
+    private static Booking currentBooking;
+
+    private static String clientsJSON;
+    private static String adminJSON;
+    private static String bookingsJSON;
+    private static String busJSON;
+
 
     /**
      * Constructor for the Database.
@@ -43,36 +52,24 @@ public class Database {
      * @param busJSON File name of buses JSON file.
      */
     public Database(String clientsJSON, String adminJSON, String bookingsJSON, String busJSON) {
-        loadJson(busJSON, buses, Bus.class);
-        loadJson(clientsJSON, clients, Client.class);
-        loadJson(bookingsJSON, bookings, Booking.class);
-        loadJson(adminJSON, admins, Admin.class);
+        Database.clientsJSON = clientsJSON;
+        Database.adminJSON = adminJSON;
+        Database.bookingsJSON = bookingsJSON;
+        Database.busJSON = busJSON;
+    }
 
-        // Temp bookings test
-//        Bus bus = new Bus("ABC10", 100, "Montreal", "NYC", LocalDate.of(2023, 5, 6),
-//                LocalTime.of(10, 0),
-//                LocalTime.of(15, 0),
-//                Status.ON_TIME, new boolean[10][4]);
-//
-//        Bus bus1 = new Bus("1", 20.0, "City A", "City B",
-//                LocalDate.of(2023, 5, 6),
-//                LocalTime.of(10, 0),
-//                LocalTime.of(14, 0),
-//                Status.ON_TIME, new boolean[10][4]);
-//
-//        Bus bus2 = new Bus("2", 15.0, "City C", "City D",
-//                LocalDate.of(2023, 5, 7),
-//                LocalTime.of(9, 0),
-//                LocalTime.of(13, 0),
-//                Status.DELAYED, new boolean[10][4]);
-//
-//        // Create an ArrayList of buses
-//        ArrayList<Bus> buses = new ArrayList<>();
-//        buses.add(bus);
-//        buses.add(bus1);
-//        buses.add(bus2);
-//
-//        writeJson("tmp", buses);
+    public static void loadJsons() {
+        loadJson(clientsJSON, clients, Client.class);
+        loadJson(adminJSON, admins, Admin.class);
+        loadJson(bookingsJSON, bookings, Booking.class);
+        loadJson(busJSON, buses, Bus.class);
+    }
+
+    public static void writeJsons() {
+        writeJson(clientsJSON, clients);
+        writeJson(adminJSON, admins);
+        writeJson(bookingsJSON, bookings);
+        writeJson(busJSON, buses);
     }
 
     /**
@@ -82,7 +79,7 @@ public class Database {
      * @param data The List of data to write into the JSON file.
      * @param classType The class type of the objects contained in the List.
      */
-    public void loadJson(String json, List<?> data, Class<?> classType) {
+    public static void loadJson(String json, List<?> data, Class<?> classType) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, classType);
@@ -103,7 +100,7 @@ public class Database {
      * @param json The name of the JSON file to write the data into.
      * @param data The List of data to write into the JSON file.
      */
-    public void writeJson(String json, List<?> data) {
+    public static void writeJson(String json, List<?> data) {
         json = String.format("src/main/resources/com/busreservationsystem/database/%s.json", json);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -155,6 +152,10 @@ public class Database {
         clients.add(client);
     }
 
+    public static void addAdmin(Admin admin) {
+        admins.add(admin);
+    }
+
     public static void addBus(Bus bus) {
         buses.add(bus);
     }
@@ -163,6 +164,11 @@ public class Database {
         bookings.add(booking);
     }
 
+    /**
+     * @param busId The bus ID of the bus to look for
+     * @return A bus object with the matching ID
+     * @throws NoSuchElementException if no bus with that ID is found
+     */
     public static Bus getBusFromId(String busId) throws NoSuchElementException {
         for (Bus bus: buses) {
             if (bus.getId().equals(busId)) {
@@ -172,6 +178,11 @@ public class Database {
         throw new NoSuchElementException("No bus with ID: " + busId);
     }
 
+    /**
+     * @param username Username of the client
+     * @return The client object with that specific username
+     * @throws NoSuchElementException if no clients with that username are found
+     */
     public static Client getClientFromUsername(String username) throws NoSuchElementException {
         for (Client client: clients) {
             if (client.getUsername().equals(username)) {
@@ -195,6 +206,12 @@ public class Database {
         return buses;
     }
 
+    /**
+     * Filters out bookings that do not belong to the client, such that client will only be able
+     * to view bookings that belong to them.
+     *
+     * @return A List of bookings belonging to the current client
+     */
     public static List<Booking> getCurrentClientBookings() {
         return bookings.stream()
                 .filter(booking -> booking.getClientUsername().equals(currentClient.getUsername()))

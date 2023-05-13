@@ -83,11 +83,6 @@ public class ClientViewBookingsController extends ClientController implements In
         table.setItems(bookings);
     }
 
-    @FXML
-    void editBooking(ActionEvent event) {
-
-    }
-
     /**
      * Handles the logic for a user cancelling a booking.
      * Opens bus seating for cancelled seat and refunds money to the Client.
@@ -96,7 +91,7 @@ public class ClientViewBookingsController extends ClientController implements In
      */
     @FXML
     void cancelBooking(ActionEvent event) {
-        try{
+        try {
             Booking booking = table.getSelectionModel().getSelectedItem();
             Database.removeBooking(booking);
 

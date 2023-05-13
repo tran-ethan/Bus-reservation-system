@@ -16,4 +16,10 @@
   "password" : "password",
   "email" : "chrissoussa@yahoo.com",
   "balance" : 0.0
+}, {
+  "fullName" : "Sakkaravarthi Ramanathan",
+  "username" : "sakkuvar",
+  "password" : "sakkupass",
+  "email" : "sakku@vaniercollege.ca",
+  "balance" : 0.0
 } ]

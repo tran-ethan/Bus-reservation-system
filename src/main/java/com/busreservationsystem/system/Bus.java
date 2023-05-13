@@ -7,7 +7,16 @@ import javafx.beans.property.SimpleObjectProperty;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Bus implements Comparable<Bus> {
+
+/**
+ * The Bus class represents a single Bus that can travel to and from a location.
+ * Every bus has a unique identifier Bus ID, and a 2D boolean array containing information regarding the seats.
+ *
+ * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
+ * @author Christopher Soussa
+ */
+public class Bus {
 
     private String id;
     private double ticketPrice;
@@ -148,10 +157,5 @@ public class Bus implements Comparable<Bus> {
                 ", arrivalTime=" + getArrivalTimeValue() +
                 ", departureTime=" + getDepartureTimeValue() +
                 '}';
-    }
-
-    @Override
-    public int compareTo(Bus o) {
-        return id.compareTo(o.getId());
     }
 }

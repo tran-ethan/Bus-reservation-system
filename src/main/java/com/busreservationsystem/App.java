@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class App extends Application {
 
     private static Scene scene;
@@ -21,6 +22,7 @@ public class App extends Application {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
+            stage.setOnCloseRequest(event -> onClose());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,8 +34,13 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
     }
 
+    public static void onClose() {
+        Database.writeJsons();
+    }
+
     public static void main(String[] args) {
         new Database("clients", "admins", "bookings", "buses");
+        Database.loadJsons();
         launch();
     }
 }

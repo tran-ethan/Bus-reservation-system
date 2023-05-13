@@ -30,6 +30,7 @@ public class ClientEditProfileControllerClient extends ClientController implemen
 
     private Client client;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = Database.getCurrentClient();

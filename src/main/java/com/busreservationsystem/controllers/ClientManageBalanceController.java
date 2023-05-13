@@ -33,7 +33,7 @@ public class ClientManageBalanceController extends ClientController implements I
 
     /**
      * Updates the displayed balance after transaction label based on amount entered in text field.
-     * Change afte balance label if user does not give a type of double.
+     * Change after balance label if user does not give a type of double.
      *
      * @param event Source of the event - is called whenever a user types something in the Withdrawal or Deposit field.
      */
