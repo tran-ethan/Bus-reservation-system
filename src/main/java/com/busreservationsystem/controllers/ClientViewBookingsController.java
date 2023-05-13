@@ -8,10 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -95,18 +92,38 @@ public class ClientViewBookingsController extends ClientController implements In
      * Handles the logic for a user cancelling a booking.
      * Opens bus seating for cancelled seat and refunds money to the Client.
      *
-     * @param event Source of event. Is called when user clicks on Cancel button.
+     * @param event Source of event. Is called when user clicks on "Cancel" button.
      */
     @FXML
     void cancelBooking(ActionEvent event) {
-        Booking booking = table.getSelectionModel().getSelectedItem();
-        Bus bus = Database.getBusFromId(booking.getBusId());
-        // Get row, col, as int that is 0-indexed
-        int row = booking.getRow() - 'A';
-        int col = booking.getColumn() - 1;
-        bus.getSeats()[row][col] = false;
-        Database.removeBooking(booking);
-        Database.getCurrentClient().deposit(booking.getPrice());
-        loadFXML("ClientViewBookings");
+        try{
+            Booking booking = table.getSelectionModel().getSelectedItem();
+            Database.removeBooking(booking);
+
+            // Remove seat from corresponding bus
+            Bus bus = Database.getBusFromId(booking.getBusId());
+            int row = booking.getRow() - 'A';
+            int col = booking.getColumn() - 1;
+            bus.getSeats()[row][col] = false;
+            // Refund client money
+            Database.getCurrentClient().deposit(booking.getPrice());
+            loadFXML("ClientViewBookings");
+
+            // Display success
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Booking successfully deleted.");
+            alert.setContentText(String.format("""
+                    Booking information
+                    - Bus ID: %s
+                    - Ticket price (refunded): %.2f$
+                    - Seat: %c%d""",
+                    booking.getBusId(), booking.getPrice(), booking.getRow(), booking.getColumn()));
+            alert.showAndWait();
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(e.getMessage());
+            alert.setContentText("Please select a booking to cancel.");
+            alert.showAndWait();
+        }
     }
 }

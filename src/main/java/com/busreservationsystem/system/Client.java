@@ -13,7 +13,6 @@ package com.busreservationsystem.system;
 public class Client extends User implements Transactional {
 
     public double balance;
-    public String type;
 
     public Client() {}
 
@@ -27,13 +26,19 @@ public class Client extends User implements Transactional {
 
     @Override
     public void deposit(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Invalid deposit amount");
         balance += amount;
     }
 
     @Override
     public void withdraw(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Invalid withdrawal amount");
+        }
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
         if (balance >= amount) this.balance -= amount;
-        else System.out.println("Withdraw failed. Insufficient balance.");
     }
 
     @Override

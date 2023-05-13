@@ -49,12 +49,6 @@ public class AdminManageBusesController extends AdminController implements Initi
     @FXML
     private TableColumn<Bus, Integer> ticketPriceCol;
 
-    @FXML
-    protected ChoiceBox<String> dateSortField;
-
-    @FXML
-    protected ChoiceBox<String> priceSortField;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -156,10 +150,23 @@ public class AdminManageBusesController extends AdminController implements Initi
         table.setItems(buses);
     }
 
+    /**
+     * Handles switching page to corresponding editing page for the selected bus in TableView.
+     *
+     * @param event Source of event: is called when Admin clicks on "Edit"
+     */
     @FXML
     private void editBus(ActionEvent event) {
-        Bus bus = table.getSelectionModel().getSelectedItem();
-        Database.setCurrentBus(bus);
-        loadFXML("AdminEditBus");
+        try {
+            Bus bus = table.getSelectionModel().getSelectedItem();
+            Database.setCurrentBus(bus);
+            loadFXML("AdminEditBus");
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(e.getMessage());
+            alert.setContentText("Please select a bus to edit.");
+
+            alert.showAndWait();
+        }
     }
 }

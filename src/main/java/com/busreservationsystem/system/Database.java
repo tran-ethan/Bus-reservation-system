@@ -121,11 +121,18 @@ public class Database {
     }
 
     public static void setCurrentClient(Client client) {
+        if (client == null) throw new NullPointerException("Client not selected");
         currentClient = client;
     }
 
     public static void setCurrentBooking(Booking booking) {
+        if (booking == null) throw new NullPointerException("Booking not selected");
         currentBooking = booking;
+    }
+
+    public static void setCurrentBus(Bus bus) throws NullPointerException {
+        if (bus == null) throw new NullPointerException("Bus not selected");
+        Database.currentBus = bus;
     }
 
     public static Admin getCurrentAdmin() {
@@ -174,10 +181,6 @@ public class Database {
         throw new NoSuchElementException("No client with username: " + username);
     }
 
-    public static void setCurrentBus(Bus bus) {
-        Database.currentBus = bus;
-    }
-
 
 
     public static ArrayList<Client> getClients() {
@@ -202,11 +205,13 @@ public class Database {
         return bookings;
     }
 
-    public static void removeBooking(Booking booking) {
+    public static void removeBooking(Booking booking) throws NullPointerException {
+        if (booking == null) throw new NullPointerException("Booking not selected");
         bookings.remove(booking);
     }
 
     public static void removeClient(Client client) {
+        if (client == null) throw new NullPointerException("Client not selected");
         clients.remove(client);
     }
 }

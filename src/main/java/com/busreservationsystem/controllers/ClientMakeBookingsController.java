@@ -42,9 +42,6 @@ public class ClientMakeBookingsController extends ClientController implements In
     private TableColumn<Bus, LocalDate> dateCol;
 
     @FXML
-    protected ChoiceBox<String> dateSortField, priceSortField;
-
-    @FXML
     private TableColumn<Bus, String> destinationCol, idCol, originCol;
 
     @FXML
@@ -162,8 +159,16 @@ public class ClientMakeBookingsController extends ClientController implements In
      */
     @FXML
     private void makeBooking(ActionEvent event) {
-        Bus bus = table.getSelectionModel().getSelectedItem();
-        Database.setCurrentBus(bus);
-        loadFXML("ClientSeatSelection");
+        try {
+            Bus bus = table.getSelectionModel().getSelectedItem();
+            Database.setCurrentBus(bus);
+            loadFXML("ClientSeatSelection");
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(e.getMessage());
+            alert.setContentText("Please select a bus to book.");
+
+            alert.showAndWait();
+        }
     }
 }

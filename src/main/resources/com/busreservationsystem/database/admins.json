@@ -4,7 +4,7 @@
   "password" : "a",
   "email" : "foobar@hotmail.com"
 }, {
-  "fullName" : "John",
+  "fullName" : "John Doe",
   "username" : "JohnDoe12",
   "password" : "johnspassword",
   "email" : "johndoe@gmail.com"

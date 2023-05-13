@@ -3,7 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: EEEBD4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.busreservationsystem.controllers.ClientViewBookingsController">
     <children>
@@ -73,37 +71,13 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <HBox alignment="CENTER_LEFT" layoutX="406.0" layoutY="35.0" prefHeight="56.0" prefWidth="579.0" spacing="40.0">
-            <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="120.0" spacing="10.0">
-                    <children>
-                        <Text fill="#de924d" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Text>
-                        <ChoiceBox fx:id="priceSortField" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-border-color: #de924d; -fx-border-width: 0px 0px 2px 0px;" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="120.0" spacing="10.0">
-                    <children>
-                        <Text fill="#de924d" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Text>
-                        <ChoiceBox fx:id="dateSortField" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent; -fx-border-color: #de924d; -fx-border-width: 0px 0px 2px 0px;" />
-                    </children>
-                </HBox>
-                <Button fx:id="edit" mnemonicParsing="false" onAction="#editBooking" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Edit" textFill="WHITE" HBox.hgrow="ALWAYS" />
-                <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Cancel" textFill="WHITE" HBox.hgrow="ALWAYS" />
-            </children>
-        </HBox>
-        <FontAwesomeIconView fill="#de924d" glyphName="FILTER" layoutX="285.0" layoutY="70.0" size="20" />
-        <Text fill="#de924d" layoutX="315.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SORT" wrappingWidth="77.728515625">
-            <font>
-                <Font name="System Bold" size="30.0" />
-            </font>
-        </Text>
+          <Button fx:id="cancel" graphicTextGap="10.0" layoutX="289.0" layoutY="37.0" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="46.0" prefWidth="697.0" style="-fx-background-color: #de924d;" text="CANCEL" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" size="16" />
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

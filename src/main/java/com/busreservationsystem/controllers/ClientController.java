@@ -19,32 +19,15 @@ import java.io.IOException;
 public abstract class ClientController {
 
     @FXML
-    public Label usernameLabel;
+    public Label usernameLabel, fullNameLabel, emailLabel, balanceLabel;
 
     @FXML
-    public Label fullNameLabel;
-
-    @FXML
-    public Label emailLabel;
-
-    @FXML
-    public Label balanceLabel;
-
-    @FXML
-    public Button gotoMakeBookings;
-
-    @FXML
-    public Button gotoViewBookings;
-
-    @FXML
-    public Button gotoEditProfile;
-
-    @FXML
-    public Button gotoManageBalance;
+    public Button gotoMakeBookings, gotoViewBookings, gotoEditProfile, gotoManageBalance;
 
     /**
      * This method is called when one of the buttons on the bottom left of the scene is clicked.
      * Handles the logic for switching between views.
+     *
      * @param event The ActionEvent triggered by clicking one of the buttons.
      */
     public void switchForm(ActionEvent event) {

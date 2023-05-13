@@ -56,7 +56,7 @@
                 </VBox>
             </children>
         </VBox>
-      <Text fill="#de924d" layoutX="315.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MANAGE BALANCE" wrappingWidth="291.166015625">
+      <Text fill="#de924d" layoutX="343.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MANAGE BALANCE" wrappingWidth="291.166015625">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -91,7 +91,24 @@
       </HBox>
       <TextField fx:id="withdrawField" layoutX="315.0" layoutY="341.0" onKeyTyped="#newBalanceChange" prefHeight="27.0" prefWidth="162.0" promptText="Withdraw amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="depositField" layoutX="315.0" layoutY="424.0" onKeyTyped="#newBalanceChange" prefHeight="27.0" prefWidth="162.0" promptText="Deposit amount" style="-fx-background-color: transparent; -fx-border-color: DE924D; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="withdraw" layoutX="505.0" layoutY="338.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #de924d;" text="Withdraw" textFill="WHITE" />
-      <Button fx:id="deposit" layoutX="505.0" layoutY="421.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #de924d;" text="Deposit" textFill="WHITE" />
+      <Button fx:id="withdraw" graphicTextGap="8.0" layoutX="505.0" layoutY="338.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Withdraw" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_DOWN" size="15" />
+         </graphic></Button>
+      <Button fx:id="deposit" graphicTextGap="8.0" layoutX="505.0" layoutY="421.0" mnemonicParsing="false" onAction="#makeTransaction" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #de924d;" text="Deposit" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_UP" size="15" />
+         </graphic></Button>
+      <VBox alignment="CENTER" layoutX="767.0" layoutY="69.0" prefHeight="200.0" prefWidth="74.0" spacing="17.0">
+         <children>
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_MASTERCARD" size="50" />
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_PAYPAL" size="50" />
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_VISA" size="50" />
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_AMEX" size="50" />
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_JCB" size="50" />
+            <FontAwesomeIconView fill="#de924d" glyphName="CC_DISCOVER" size="50" />
+         </children>
+      </VBox>
+      <FontAwesomeIconView fill="#de924d" glyphName="USD" layoutX="308.0" layoutY="90.0" size="25" />
     </children>
 </AnchorPane>

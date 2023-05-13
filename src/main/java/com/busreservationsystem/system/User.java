@@ -1,5 +1,6 @@
 package com.busreservationsystem.system;
 
+
 /**
  * The User class represents a user entity in bus reservation system.
  * Is superclass of Admin and Customer.
@@ -34,7 +35,15 @@ public abstract class User {
         return fullName;
     }
 
+    /**
+     * Sets the full name of the user.
+     *
+     * @param fullName New name to be set, must contain both first and last name at least.
+     * @throws IllegalArgumentException if full name is empty, or does not contain first and last name
+     */
     public void setFullName(String fullName) {
+        if (fullName.isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
+        if (fullName.split(" ").length < 2) throw new IllegalArgumentException("Invalid name");
         this.fullName = fullName;
     }
 
@@ -42,7 +51,20 @@ public abstract class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    /**
+     * Sets the username of the user.
+     *
+     * @param username New username to be set. Username must be unique, no other User should have the same username.
+     * @throws IllegalArgumentException if username is empty or already exists
+     */
+    public void setUsername(String username) throws IllegalArgumentException {
+        if (username.isEmpty()) throw new IllegalArgumentException("Username cannot be empty");
+        for (Client client: Database.getClients()) {
+            if (client.getUsername().equals(username)) throw new IllegalArgumentException("Username is already taken");
+        }
+        for (Admin admin: Database.getAdmins()) {
+            if (admin.getUsername().equals(username)) throw new IllegalArgumentException("Username is already taken");
+        }
         this.username = username;
     }
 
@@ -50,7 +72,9 @@ public abstract class User {
         return password;
     }
 
-    public void setPassword(String password) {
+
+    public void setPassword(String password) throws IllegalArgumentException {
+        if (password.isEmpty()) throw new IllegalArgumentException("Password cannot be empty");
         this.password = password;
     }
 
@@ -58,7 +82,16 @@ public abstract class User {
         return email;
     }
 
+    /**
+     * Sets the email address for the user.
+     *
+     * @param email Email address to be set
+     * @throws IllegalArgumentException if the email is null, empty, or has an invalid format
+     */
     public void setEmail(String email) {
+        if (email.isEmpty()) throw new IllegalArgumentException("Email cannot be empty");
+        String pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        if (!email.matches(pattern)) throw new IllegalArgumentException("Invalid email format");
         this.email = email;
     }
 

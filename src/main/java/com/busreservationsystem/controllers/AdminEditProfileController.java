@@ -1,11 +1,13 @@
 package com.busreservationsystem.controllers;
 
 import com.busreservationsystem.system.Admin;
+import com.busreservationsystem.system.Booking;
 import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -16,34 +18,16 @@ import java.util.ResourceBundle;
 public class AdminEditProfileController extends AdminController implements Initializable {
 
     @FXML
-    private Label oldUsername;
+    private Label oldUsername, oldName, oldEmail;
 
     @FXML
-    private Label oldName;
+    private Label newUsername, newName, newEmail;
 
     @FXML
-    private Label oldEmail;
+    private TextField usernameField, nameField;
 
     @FXML
-    private Label newUsername;
-
-    @FXML
-    private Label newName;
-
-    @FXML
-    private Label newEmail;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField passwordField;
+    private TextField emailField, passwordField;
 
     private Admin admin;
 
@@ -64,11 +48,56 @@ public class AdminEditProfileController extends AdminController implements Initi
      */
     @FXML
     void save(ActionEvent event) {
-        // Update user credentials
-        admin.setUsername(usernameField.getText());
-        admin.setFullName(nameField.getText());
-        admin.setEmail(emailField.getText());
-        admin.setPassword(passwordField.getText());
+        String newUsername = usernameField.getText();
+        String newFullName = nameField.getText();
+        String newEmail = emailField.getText();
+        String username = oldUsername.getText();
+
+        try {
+            // Update user credentials
+            admin.setUsername(newUsername);
+            admin.setFullName(newFullName);
+            admin.setEmail(newEmail);
+            admin.setPassword(passwordField.getText());
+
+            // Display success
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Profile successfully edited.");
+            alert.setContentText(String.format("""
+                    NEW CREDENTIALS
+                    - Username: %s
+                    - Name: %s
+                    - Email: %s""",
+                    newUsername, newFullName, newEmail));
+            alert.showAndWait();
+
+        } catch (IllegalArgumentException e) {
+
+            // Display alert
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            String methodName = e.getStackTrace()[0].getMethodName();
+            alert.setTitle(e.getMessage());
+
+            String error;
+            switch (e.getMessage()) {
+                case "Username is already taken" -> error = "Please choose another name. This one already exists.";
+                case "Invalid email format" -> error = "Please enter a valid email address.";
+                case "Invalid name" -> error = "Please enter your full name - must contain both first and last name";
+                default -> error = "Please fill all fields before saving.";
+            }
+            alert.setContentText(error);
+
+            /* If one field is invalid after the username, reset all credentials that have been set before that
+            field back to previously valid state. Only call when method that throws exception is not setUsername
+            because it will rethrow an exception by setting it back to previous name, which already exists */
+            if (!methodName.equals("setUsername")) {
+                admin.setUsername(username);
+                admin.setFullName(oldName.getText());
+                admin.setEmail(oldEmail.getText());
+            }
+            alert.showAndWait();
+        }
+
         // Reloads page to update left panel
         loadFXML("AdminEditProfile");
     }

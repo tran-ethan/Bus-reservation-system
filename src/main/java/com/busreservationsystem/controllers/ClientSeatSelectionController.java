@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -108,6 +109,13 @@ public class ClientSeatSelectionController extends ClientController implements I
             Booking booking = new Booking(bus, client, letter, col);
             Database.addBooking(booking);
         }
+
+        // Display success
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Successful booking");
+        alert.setContentText("Booked seats " + selectedSeats);
+        alert.showAndWait();
+
         loadFXML("ClientMakeBookings");
     }
 

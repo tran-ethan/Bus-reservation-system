@@ -63,6 +63,7 @@ public class AdminEditClientController extends AdminController implements Initia
     /**
      * Handles the text change event for the text fields - is called everytime a character is inputted into a field.
      * Updates the corresponding labels based on the source of the field that has been changed.
+     *
      * @param event The source of the event.
      */
     @FXML
