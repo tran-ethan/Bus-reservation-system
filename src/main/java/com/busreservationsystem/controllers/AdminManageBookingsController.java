@@ -19,12 +19,14 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Ethan Tran
+ */
 public class AdminManageBookingsController extends AdminController implements Initializable {
 
     @FXML
     private TableView<Booking> table;
-    @FXML
-    private TableColumn<Booking, String> usernameCol;
 
     @FXML
     private TableColumn<Booking, LocalDate> dateCol;
@@ -33,19 +35,14 @@ public class AdminManageBookingsController extends AdminController implements In
     private TableColumn<Booking, LocalTime> departureCol;
 
     @FXML
-    private TableColumn<Booking, String> destinationCol;
-
-    @FXML
-    private TableColumn<Booking, String> busIdCol;
-
-    @FXML
-    private TableColumn<Booking, String> originCol;
+    private TableColumn<Booking, String> usernameCol, destinationCol, busIdCol, originCol;
 
     @FXML
     private TableColumn<Booking, Double> priceCol;
 
     @FXML
     private TableColumn<Booking, Character> rowCol;
+
     @FXML
     private TableColumn<Booking, Integer> colCol;
 
@@ -85,6 +82,7 @@ public class AdminManageBookingsController extends AdminController implements In
         });
         rowCol.setCellValueFactory(new PropertyValueFactory<>("row"));
         colCol.setCellValueFactory(new PropertyValueFactory<>("column"));
+
         // Set table values according to database
         ObservableList<Booking> bookings = FXCollections.observableArrayList(Database.getBookings());
         table.setItems(bookings);

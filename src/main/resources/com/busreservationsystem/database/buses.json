@@ -1,31 +1,71 @@
 [ {
-  "id" : "ABC10",
-  "ticketPrice" : 100.0,
+  "id" : "MTL-NYC001",
+  "ticketPrice" : 311.0,
   "origin" : "Montreal",
-  "destination" : "NYC",
+  "destination" : "New York City",
   "status" : "ON_TIME",
-  "departureDate" : [ 2023, 5, 6 ],
-  "arrivalTime" : [ 15, 0 ],
+  "departureDate" : [ 2023, 5, 15 ],
+  "arrivalTime" : [ 16, 30 ],
   "departureTime" : [ 10, 0 ],
-  "seats" : [ [ true, true, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ true, false, false, false ], [ true, false, false, false ], [ true, true, false, true ] ]
+  "seats" : [ [ false, false, false, false ], [ false, false, false, true ], [ false, false, false, false ], [ true, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ true, true, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 }, {
-  "id" : "QP20FN3",
-  "ticketPrice" : 20.0,
-  "origin" : "City A",
-  "destination" : "City B",
+  "id" : "NYC-BOS",
+  "ticketPrice" : 35.5,
+  "origin" : "New York City",
+  "destination" : "Boston",
   "status" : "ON_TIME",
-  "departureDate" : [ 2023, 5, 6 ],
+  "departureDate" : [ 2023, 5, 16 ],
+  "arrivalTime" : [ 13, 30 ],
+  "departureTime" : [ 9, 0 ],
+  "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ true, true, false, false ], [ false, false, false, false ], [ false, false, true, true ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
+}, {
+  "id" : "SF-LA003EL",
+  "ticketPrice" : 45.0,
+  "origin" : "San Francisco",
+  "destination" : "Los Angeles",
+  "status" : "ON_TIME",
+  "departureDate" : [ 2023, 5, 18 ],
   "arrivalTime" : [ 14, 0 ],
+  "departureTime" : [ 7, 30 ],
+  "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
+}, {
+  "id" : "NYC-MTL31",
+  "ticketPrice" : 89.0,
+  "origin" : "New York City",
+  "destination" : "Montreal",
+  "status" : "DELAYED",
+  "departureDate" : [ 2023, 5, 8 ],
+  "arrivalTime" : [ 20, 0 ],
+  "departureTime" : [ 12, 45 ],
+  "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, true ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
+}, {
+  "id" : "MTL-TO100",
+  "ticketPrice" : 50.0,
+  "origin" : "Montreal",
+  "destination" : "Toronto",
+  "status" : "ON_TIME",
+  "departureDate" : [ 2023, 5, 13 ],
+  "arrivalTime" : [ 14, 45 ],
   "departureTime" : [ 10, 0 ],
   "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 }, {
-  "id" : "DPSB009",
-  "ticketPrice" : 15.0,
-  "origin" : "Laval",
+  "id" : "MTL-QC315",
+  "ticketPrice" : 25.0,
+  "origin" : "Montreal",
+  "destination" : "Quebec City",
+  "status" : "DELAYED",
+  "departureDate" : [ 2023, 5, 13 ],
+  "arrivalTime" : [ 16, 0 ],
+  "departureTime" : [ 13, 15 ],
+  "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
+}, {
+  "id" : "NYC-TO031",
+  "ticketPrice" : 190.0,
+  "origin" : "New York City",
   "destination" : "Toronto",
   "status" : "DELAYED",
-  "departureDate" : [ 2023, 5, 7 ],
-  "arrivalTime" : [ 15, 30 ],
-  "departureTime" : [ 9, 0 ],
+  "departureDate" : [ 2023, 5, 19 ],
+  "arrivalTime" : [ 12, 16 ],
+  "departureTime" : [ 1, 30 ],
   "seats" : [ [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ], [ false, false, false, false ] ]
 } ]

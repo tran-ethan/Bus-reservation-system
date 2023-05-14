@@ -20,6 +20,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Ethan Tran
+ */
 public class ClientSeatSelectionController extends ClientController implements Initializable {
 
     @FXML
@@ -95,28 +99,48 @@ public class ClientSeatSelectionController extends ClientController implements I
     @FXML
     public void makeBooking(ActionEvent event) {
         Client client = Database.getCurrentClient();
-        // For every selected seat
-        for (String seatNumber: selectedSeats) {
-            char letter = seatNumber.charAt(0);
-            int row = letter - 'A';
-            int col = Character.getNumericValue(seatNumber.charAt(1));
+        try {
+            // Throw an exception if client has not selected any seats
+            if (selectedSeats.size() == 0) throw new NullPointerException("No seats selected");
 
-            // Withdraw money from client
-            client.withdraw(bus.getTicketPrice());
-            // Update seats in bus
-            bus.getSeats()[row][col - 1] = true;
-            // Make booking in name of Client
-            Booking booking = new Booking(bus, client, letter, col);
-            Database.addBooking(booking);
+            // Withdraw money from client - possibly throws IllegalArgumentException
+            client.withdraw(bus.getTicketPrice() * selectedSeats.size());
+
+            // For every selected seat
+            for (String seatNumber : selectedSeats) {
+                char letter = seatNumber.charAt(0);
+                int row = letter - 'A';
+                int col = Character.getNumericValue(seatNumber.charAt(1));
+                // Update seats in bus
+                bus.getSeats()[row][col - 1] = true;
+                // Make booking in name of Client
+                Booking booking = new Booking(bus, client, letter, col);
+                Database.addBooking(booking);
+            }
+
+            // Display success
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Successful booking");
+            alert.setContentText("Booked seats " + selectedSeats);
+            alert.showAndWait();
+
+            // Get user to bookings page
+            loadFXML("ClientMakeBookings");
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(e.getMessage());
+            alert.setContentText(String.format("""
+                    You do not have enough money to book these seats. Please deposit more money.
+                    You currently have %.2f
+                    This transaction costs %.2f""",
+                    client.getBalance(), bus.getTicketPrice() * selectedSeats.size()));
+            alert.showAndWait();
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(e.getMessage());
+            alert.setContentText("Please select seats to book.");
+            alert.showAndWait();
         }
-
-        // Display success
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Successful booking");
-        alert.setContentText("Booked seats " + selectedSeats);
-        alert.showAndWait();
-
-        loadFXML("ClientMakeBookings");
     }
 
     @FXML

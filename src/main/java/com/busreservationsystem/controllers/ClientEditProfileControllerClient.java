@@ -14,6 +14,12 @@ import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
+ * @author Ethan Tran
+ */
 public class ClientEditProfileControllerClient extends ClientController implements Initializable {
 
     @FXML
@@ -68,7 +74,7 @@ public class ClientEditProfileControllerClient extends ClientController implemen
             }
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Profile successfully edited.");
             alert.setContentText(String.format("""
                     NEW CREDENTIALS
@@ -84,8 +90,6 @@ public class ClientEditProfileControllerClient extends ClientController implemen
             Alert alert = new Alert(Alert.AlertType.ERROR);
             String methodName = e.getStackTrace()[0].getMethodName();
             alert.setTitle(e.getMessage());
-
-
             String error = switch (e.getMessage()) {
                 case "Username is already taken" -> "Please choose another name. This one already exists.";
                 case "Invalid email format" -> "Please enter a valid email address.";

@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
  * and variables without instantiating Database, as all controllers will point to the same one.
  *
  * @author Ethan Tran
- * @author Nikolaos Polyhronopoulos
- * @author Christopher Soussa
  */
 public class Database {
 
@@ -58,6 +56,9 @@ public class Database {
         Database.busJSON = busJSON;
     }
 
+    /**
+     * This method will be called when the user first launches the application.
+     */
     public static void loadJsons() {
         loadJson(clientsJSON, clients, Client.class);
         loadJson(adminJSON, admins, Admin.class);
@@ -65,6 +66,10 @@ public class Database {
         loadJson(busJSON, buses, Bus.class);
     }
 
+    /**
+     * This method will be called when the user closes the application.
+     * It will update all the JSON files to match all the interactions that happened during the session.
+     */
     public static void writeJsons() {
         writeJson(clientsJSON, clients);
         writeJson(adminJSON, admins);

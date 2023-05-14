@@ -14,7 +14,13 @@ import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
+ */
 public class ClientManageBalanceController extends ClientController implements Initializable {
+
     @FXML
     private Label afterBalance, beforeBalance;
 
@@ -70,8 +76,9 @@ public class ClientManageBalanceController extends ClientController implements I
                 case "deposit" -> client.deposit(Double.parseDouble(depositField.getText()));
                 case "withdraw" -> client.withdraw(Double.parseDouble(withdrawField.getText()));
             }
+
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Successful Transaction");
             alert.setContentText(String.format("New balance: %.2f", client.getBalance()));
             alert.showAndWait();

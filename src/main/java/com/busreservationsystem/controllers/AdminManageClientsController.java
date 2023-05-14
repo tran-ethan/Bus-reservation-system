@@ -1,7 +1,5 @@
 package com.busreservationsystem.controllers;
 
-import com.busreservationsystem.system.Booking;
-import com.busreservationsystem.system.Bus;
 import com.busreservationsystem.system.Client;
 import com.busreservationsystem.system.Database;
 import javafx.collections.FXCollections;
@@ -9,13 +7,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
+ */
 public class AdminManageClientsController extends AdminController implements Initializable {
 
     @FXML
@@ -86,7 +91,7 @@ public class AdminManageClientsController extends AdminController implements Ini
             String clientUsername = client.getUsername();
             Database.getBookings().removeIf(booking -> booking.getClientUsername().equals(clientUsername));
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Deleted client successfully");
             alert.setContentText(String.format("Client '%s' has been deleted.", clientUsername));
 

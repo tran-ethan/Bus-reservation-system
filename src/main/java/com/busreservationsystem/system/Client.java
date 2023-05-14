@@ -7,7 +7,6 @@ package com.busreservationsystem.system;
  *
  * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
- * @author Christopher Soussa
  */
 
 public class Client extends User implements Transactional {

@@ -19,6 +19,11 @@ import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 
+/**
+ * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
+ */
 public class AdminCreateBusController extends AdminController implements Initializable {
 
     @FXML
@@ -82,7 +87,7 @@ public class AdminCreateBusController extends AdminController implements Initial
             Database.addBus(bus);
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Bus successfully edited.");
             alert.setContentText(String.format("""
                     NEW INFORMATION
@@ -94,7 +99,7 @@ public class AdminCreateBusController extends AdminController implements Initial
                     - Status: %s""",
                     bus.getId(), bus.getOrigin(), bus.getDestination(), bus.getTicketPrice(),
                     bus.getDepartureDateValue(), bus.getDepartureDateValue(), bus.getDepartureDateValue(),
-                    bus.getStatus()));
+                    bus.getStatusValue()));
 
             alert.showAndWait();
             loadFXML("AdminManageBuses");
@@ -135,7 +140,7 @@ public class AdminCreateBusController extends AdminController implements Initial
         try {
             dateLabel.setText(departureDateField.getValue().format(dateFormatter));
         } catch (DateTimeParseException e) {
-            dateLabel.setText("Invalid time format provided");
+            dateLabel.setText("Invalid date format provided");
         }
     }
 

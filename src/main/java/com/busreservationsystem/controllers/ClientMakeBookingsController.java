@@ -143,8 +143,8 @@ public class ClientMakeBookingsController extends ClientController implements In
         ObservableList<Bus> buses = FXCollections.observableArrayList();
         for (Bus bus: Database.getBuses()) {
             if ((busId.isEmpty() || bus.getId().equals(busId))
-            && (origin.isEmpty()|| bus.getOrigin().equals(origin))
-            && (destination.isEmpty() || bus.getDestination().equals(destination))) {
+            && (origin.isEmpty()|| bus.getOrigin().equalsIgnoreCase(origin))
+            && (destination.isEmpty() || bus.getDestination().equalsIgnoreCase(destination))) {
                 buses.add(bus);
             }
         }

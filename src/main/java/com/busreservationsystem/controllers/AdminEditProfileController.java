@@ -14,6 +14,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+/**
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
+ */
 public class AdminEditProfileController extends AdminController implements Initializable {
 
     @FXML
@@ -60,7 +64,7 @@ public class AdminEditProfileController extends AdminController implements Initi
             admin.setPassword(passwordField.getText());
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Profile successfully edited.");
             alert.setContentText(String.format("""
                     NEW CREDENTIALS

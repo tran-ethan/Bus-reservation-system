@@ -12,9 +12,11 @@ import java.io.IOException;
 
 
 /**
- * ClientController is the abstract superclass of all Controller classes for the Client view.
- * This controller handles common operations among all its ClientController subclasses.
+ * AdminController is the abstract superclass of all Controller classes for the Admin view.
+ * This controller handles common operations among all its AdminController subclasses.
  *
+ * @author Nikolaos Polyhronopoulos
+ * @author Ethan Tran
  */
 public abstract class AdminController {
 

@@ -14,6 +14,12 @@ import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
+ */
 public class AdminEditClientController extends AdminController implements Initializable {
 
     @FXML
@@ -64,7 +70,7 @@ public class AdminEditClientController extends AdminController implements Initia
             }
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Profile successfully edited.");
             alert.setContentText(String.format("""
                     NEW CREDENTIALS

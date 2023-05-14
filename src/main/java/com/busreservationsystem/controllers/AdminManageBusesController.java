@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
  * including ID, origin, destination, departure time, arrival time, departure date, status, and ticket price.
  * Clients are able to search for buses and sort them according to specified fields.
  * This ability will allow clients to book a seat on the bus.
+ *
+ * @author Ethan Tran
  */
 public class AdminManageBusesController extends AdminController implements Initializable {
 
@@ -141,8 +143,8 @@ public class AdminManageBusesController extends AdminController implements Initi
         ObservableList<Bus> buses = FXCollections.observableArrayList();
         for (Bus bus: Database.getBuses()) {
             if ((busId.isEmpty() || bus.getId().equals(busId))
-                    && (origin.isEmpty()|| bus.getOrigin().equals(origin))
-                    && (destination.isEmpty() || bus.getDestination().equals(destination))) {
+                    && (origin.isEmpty()|| bus.getOrigin().equalsIgnoreCase(origin))
+                    && (destination.isEmpty() || bus.getDestination().equalsIgnoreCase(destination))) {
                 buses.add(bus);
             }
         }
@@ -189,7 +191,7 @@ public class AdminManageBusesController extends AdminController implements Initi
             String busId = bus.getId();
             Database.getBookings().removeIf(booking -> booking.getBusId().equals(busId));
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Deleted bus successfully");
             alert.setContentText(String.format("Bus with ID '%s' has been deleted.", busId));
 

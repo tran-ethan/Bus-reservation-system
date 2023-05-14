@@ -5,9 +5,7 @@ package com.busreservationsystem.system;
  * with the ability to manage customers and flights.
  * Is subclass of User.
  *
- * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
- * @author Christopher Soussa
  */
 
 public class Admin extends User {

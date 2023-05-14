@@ -17,6 +17,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Nikolaos Polyronopoulos
+ * @author Ethan Tran
+ */
 public class AdminEditBusController extends AdminController implements Initializable {
 
     @FXML
@@ -69,6 +74,7 @@ public class AdminEditBusController extends AdminController implements Initializ
         String origin = originField.getText();
         String destination = destinationField.getText();
         try {
+            // ParseDouble and LocalTime parse can possibly throw exceptions that will be caught
             double ticketPrice = (ticketPriceField.getText().isEmpty())
                     ? bus.getTicketPrice()
                     : Double.parseDouble(ticketPriceField.getText());
@@ -79,6 +85,9 @@ public class AdminEditBusController extends AdminController implements Initializ
             LocalTime arrivalTime = (arrivalTimeField.getText().isEmpty())
                     ? bus.getArrivalTimeValue()
                     : LocalTime.parse(arrivalTimeField.getText(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+            // Only set values that are not empty. Non-empty values do not throw an exception, they will
+            // be handled as if they remained unchanged
             Status status = statusField.getValue();
             if (!busId.isEmpty()) bus.setId(busId);
             if (!origin.isEmpty()) bus.setOrigin(origin);
@@ -89,7 +98,8 @@ public class AdminEditBusController extends AdminController implements Initializ
             bus.setArrivalTime(arrivalTime);
             bus.setStatus(status);
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            // Display successful edit
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Bus successfully edited.");
             alert.setContentText(String.format("""
                     NEW INFORMATION

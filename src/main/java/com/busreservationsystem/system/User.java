@@ -7,9 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * The User class represents a user entity in bus reservation system.
  * Is superclass of Admin and Customer.
  *
- * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
- * @author Christopher Soussa
+ * @author Ethan Tran
  */
 
 public abstract class User {

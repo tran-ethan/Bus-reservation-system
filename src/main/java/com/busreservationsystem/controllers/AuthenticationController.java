@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
  * This controller is linked to LoginForm.fxml and SignUpForm.fxml.
  * This controller handles the logic for user authentication and account creation functionalities.
  *
+ * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
  */
 public class AuthenticationController extends ClientController {
 

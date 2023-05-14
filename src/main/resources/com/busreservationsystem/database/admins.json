@@ -1,11 +1,6 @@
 [ {
-  "fullName" : "Foo Bar",
-  "username" : "foobar",
-  "password" : "a",
-  "email" : "foobar@hotmail.com"
-}, {
-  "fullName" : "John Doe",
-  "username" : "JohnDoe12",
-  "password" : "johnspassword",
-  "email" : "johndoe@gmail.com"
+  "fullName" : "Sakkaravarthi Ramanathan",
+  "username" : "sakku",
+  "password" : "password",
+  "email" : "sakku@vaniercollege.ca"
 } ]

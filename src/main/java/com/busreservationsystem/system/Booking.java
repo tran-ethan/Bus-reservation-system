@@ -13,11 +13,10 @@ import java.time.LocalTime;
  * and contains the necessary information regarding the booking ticket.
  * A single booking ticket is unique to the Client, and clients will only be able to view their own bookings.
  *
- * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
- * @author Christopher Soussa
+ * @author Ethan Tran
  */
-public class Booking implements Comparable<Booking> {
+public class Booking {
 
     private String busId;
     private String origin;
@@ -139,11 +138,6 @@ public class Booking implements Comparable<Booking> {
 
     public double getPrice() {
         return price;
-    }
-
-    @Override
-    public int compareTo(Booking booking) {
-        return busId.compareTo(booking.getBusId());
     }
 
     @Override

@@ -15,6 +15,8 @@ import java.io.IOException;
  * ClientController is the abstract superclass of all Controller classes for the Client view.
  * This controller handles common operations among all its ClientController subclasses.
  *
+ * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
  */
 public abstract class ClientController {
 

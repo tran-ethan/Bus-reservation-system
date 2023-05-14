@@ -18,6 +18,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
+/**
+ * @author Ethan Tran
+ */
 public class ClientViewBookingsController extends ClientController implements Initializable {
 
 
@@ -78,7 +81,7 @@ public class ClientViewBookingsController extends ClientController implements In
         rowCol.setCellValueFactory(new PropertyValueFactory<>("row"));
         colCol.setCellValueFactory(new PropertyValueFactory<>("column"));
 
-        // Set table values according to database
+        // Set table values according to database. Only display bookings of the current user
         ObservableList<Booking> bookings = FXCollections.observableArrayList(Database.getCurrentClientBookings());
         table.setItems(bookings);
     }
@@ -92,6 +95,7 @@ public class ClientViewBookingsController extends ClientController implements In
     @FXML
     void cancelBooking(ActionEvent event) {
         try {
+            // Select booking - possiblt throws NullPointerException
             Booking booking = table.getSelectionModel().getSelectedItem();
             Database.removeBooking(booking);
 
@@ -100,12 +104,13 @@ public class ClientViewBookingsController extends ClientController implements In
             int row = booking.getRow() - 'A';
             int col = booking.getColumn() - 1;
             bus.getSeats()[row][col] = false;
+
             // Refund client money
             Database.getCurrentClient().deposit(booking.getPrice());
             loadFXML("ClientViewBookings");
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Booking successfully deleted.");
             alert.setContentText(String.format("""
                     Booking information

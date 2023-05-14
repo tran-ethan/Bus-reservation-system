@@ -16,6 +16,10 @@ import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 
+/**
+ * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
+ */
 public class AdminEditBookingController extends AdminController implements Initializable {
 
     @FXML
@@ -66,15 +70,18 @@ public class AdminEditBookingController extends AdminController implements Initi
     @FXML
     void save(ActionEvent event) {
         try {
-            String busId = busIdField.getText();
-            Bus busFromId = Database.getBusFromId(busId);
+            // Retrieve and check for valid rows and existing bus ID
+            Bus busFromId = Database.getBusFromId(busIdField.getText());
             if (rowField.getText().length() != 1) throw new IllegalArgumentException("Invalid row");
             char row = rowField.getText().charAt(0);
             int col = Integer.parseInt(columnField.getText());
+
             // Check if seat is already taken
             if (busFromId.getSeats()[row - 'A'][col - 1]) throw new IllegalArgumentException("Seat already booked");
             busFromId.getSeats()[row - 'A'][col - 1] = true;
-            booking.setBusId(busId);
+
+            // Set all attributes - possibly throws exceptions
+            booking.setBusId(busIdField.getText());
             booking.setPrice(busFromId.getTicketPrice());
             booking.setOrigin(busFromId.getOrigin());
             booking.setDestination(busFromId.getDestination());
@@ -84,7 +91,7 @@ public class AdminEditBookingController extends AdminController implements Initi
             booking.setColumn(col);
 
             // Display success
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Bus successfully edited.");
             alert.setContentText(String.format("""
                     NEW BOOKING INFORMATION
@@ -92,8 +99,9 @@ public class AdminEditBookingController extends AdminController implements Initi
                     - Ticket price: %.2f$
                     - Seat row: %c
                     - Seat column: %d""",
-                    busId, busFromId.getTicketPrice(), row, col));
+                    busFromId.getId(), busFromId.getTicketPrice(), row, col));
             alert.showAndWait();
+
             loadFXML("AdminManageBookings");
         } catch (NoSuchElementException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
