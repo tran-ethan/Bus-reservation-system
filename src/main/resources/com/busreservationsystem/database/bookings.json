@@ -6,7 +6,6 @@
   "departureTime" : [ 10, 0 ],
   "departureDate" : [ 2023, 5, 15 ],
   "clientUsername" : "3ethan",
-  "clientName" : "Ethan Tran",
   "row" : "H",
   "column" : 1
 }, {
@@ -17,7 +16,6 @@
   "departureTime" : [ 10, 0 ],
   "departureDate" : [ 2023, 5, 15 ],
   "clientUsername" : "3ethan",
-  "clientName" : "Ethan Tran",
   "row" : "H",
   "column" : 2
 }, {
@@ -28,7 +26,6 @@
   "departureTime" : [ 10, 0 ],
   "departureDate" : [ 2023, 5, 15 ],
   "clientUsername" : "niko_polyhron",
-  "clientName" : "Nikolaos Polyhronopoulous",
   "row" : "B",
   "column" : 4
 }, {
@@ -39,7 +36,6 @@
   "departureTime" : [ 10, 0 ],
   "departureDate" : [ 2023, 5, 15 ],
   "clientUsername" : "Chris",
-  "clientName" : "Christopher Soussa",
   "row" : "D",
   "column" : 1
 }, {
@@ -50,7 +46,6 @@
   "departureTime" : [ 9, 0 ],
   "departureDate" : [ 2023, 5, 16 ],
   "clientUsername" : "Chris",
-  "clientName" : "Christopher Soussa",
   "row" : "C",
   "column" : 1
 }, {
@@ -61,7 +56,6 @@
   "departureTime" : [ 9, 0 ],
   "departureDate" : [ 2023, 5, 16 ],
   "clientUsername" : "Chris",
-  "clientName" : "Christopher Soussa",
   "row" : "C",
   "column" : 2
 }, {
@@ -72,7 +66,6 @@
   "departureTime" : [ 9, 0 ],
   "departureDate" : [ 2023, 5, 16 ],
   "clientUsername" : "niko_polyhron",
-  "clientName" : "Nikolaos Polyhronopoulous",
   "row" : "E",
   "column" : 3
 }, {
@@ -83,7 +76,6 @@
   "departureTime" : [ 12, 45 ],
   "departureDate" : [ 2023, 5, 8 ],
   "clientUsername" : "niko_polyhron",
-  "clientName" : "Nikolaos Polyhronopoulous",
   "row" : "F",
   "column" : 4
 }, {
@@ -94,7 +86,6 @@
   "departureTime" : [ 9, 0 ],
   "departureDate" : [ 2023, 5, 16 ],
   "clientUsername" : "niko_polyhron",
-  "clientName" : "Nikolaos Polyhronopoulous",
   "row" : "E",
   "column" : 4
 } ]

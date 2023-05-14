@@ -19,14 +19,21 @@ import java.time.LocalTime;
 public class Booking {
 
     private String busId;
+
     private String origin;
+
     private String destination;
+
     private double price;
+
     private final ObjectProperty<LocalTime> departureTime = new SimpleObjectProperty<>();
+
     private final ObjectProperty<LocalDate> departureDate = new SimpleObjectProperty<>();
+
     private String clientUsername;
-    private String clientName;
+
     private char row;
+
     private int column;
 
 
@@ -39,7 +46,6 @@ public class Booking {
         this.departureDate.set(bus.getDepartureDateValue());
         this.departureTime.set(bus.getDepartureTimeValue());
         this.clientUsername = client.getUsername();
-        this.clientName = client.getFullName();
         this.row = row;
         this.column = column;
     }
@@ -120,14 +126,6 @@ public class Booking {
         this.clientUsername = clientUsername;
     }
 
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
     public char getRow() {
         return row;
     }
@@ -150,7 +148,6 @@ public class Booking {
                 ", departureTime=" + getDepartureTimeValue() +
                 ", departureDate=" + getDepartureDateValue() +
                 ", clientUsername='" + clientUsername + '\'' +
-                ", clientName='" + clientName + '\'' +
                 ", row=" + row +
                 ", column=" + column +
                 '}';

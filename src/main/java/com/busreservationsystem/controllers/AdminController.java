@@ -15,8 +15,8 @@ import java.io.IOException;
  * AdminController is the abstract superclass of all Controller classes for the Admin view.
  * This controller handles common operations among all its AdminController subclasses.
  *
- * @author Nikolaos Polyhronopoulos
  * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
  */
 public abstract class AdminController {
 

@@ -1,5 +1,6 @@
 package com.busreservationsystem.controllers;
 
+import com.busreservationsystem.system.Booking;
 import com.busreservationsystem.system.Bus;
 import com.busreservationsystem.system.Database;
 import com.busreservationsystem.system.Status;
@@ -20,7 +21,6 @@ import java.util.ResourceBundle;
 
 /**
  * @author Ethan Tran
- * @author Nikolaos Polyronopoulos
  */
 public class AdminEditBusController extends AdminController implements Initializable {
 
@@ -98,6 +98,26 @@ public class AdminEditBusController extends AdminController implements Initializ
             bus.setArrivalTime(arrivalTime);
             bus.setStatus(status);
 
+            // Change all bookings to match new Bus ID
+            for (Booking booking: Database.getBookings()) {
+                // Matching bus only if ID is same as old ID
+                if (booking.getBusId().equals(busIdLabel.getText())) {
+                    if (!busId.isEmpty()) {
+                        booking.setBusId(busId);
+                    }
+                    if (!origin.isEmpty() && booking.getOrigin().equals(originLabel.getText())) {
+                        booking.setOrigin(origin);
+                    }
+                    if (!destination.isEmpty() && booking.getDestination().equals(destinationLabel.getText())) {
+                        booking.setOrigin(destination);
+                    }
+                    booking.setPrice(ticketPrice);
+                    System.out.println(departureDate);
+                    booking.setDepartureDate(departureDate);
+                    booking.setDepartureTime(departureTime);
+                }
+            }
+
             // Display successful edit
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Bus successfully edited.");
@@ -121,8 +141,8 @@ public class AdminEditBusController extends AdminController implements Initializ
             alert.showAndWait();
         } catch (DateTimeParseException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid time format");
-            alert.setContentText("Please enter a valid time format for the departure and arrival time.");
+            alert.setTitle("Invalid time or date format");
+            alert.setContentText("Please enter a valid time format for the departure and arrival time/date.");
             departureTimeField.clear();
             arrivalTimeField.clear();
             alert.showAndWait();
