@@ -112,7 +112,6 @@ public class AdminEditBusController extends AdminController implements Initializ
                         booking.setOrigin(destination);
                     }
                     booking.setPrice(ticketPrice);
-                    System.out.println(departureDate);
                     booking.setDepartureDate(departureDate);
                     booking.setDepartureTime(departureTime);
                 }

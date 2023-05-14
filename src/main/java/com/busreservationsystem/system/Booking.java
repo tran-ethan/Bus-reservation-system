@@ -72,7 +72,6 @@ public class Booking {
     }
 
     public void setRow(char row) {
-        row = Character.toUpperCase(row);
         if (row < 'A' || row > 'J') {
             throw new IllegalArgumentException("Invalid row");
         }

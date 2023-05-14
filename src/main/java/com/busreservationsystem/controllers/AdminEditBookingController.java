@@ -73,7 +73,7 @@ public class AdminEditBookingController extends AdminController implements Initi
             // Retrieve and check for valid rows and existing bus ID
             Bus busFromId = Database.getBusFromId(busIdField.getText());
             if (rowField.getText().length() != 1) throw new IllegalArgumentException("Invalid row");
-            char row = rowField.getText().charAt(0);
+            char row = Character.toUpperCase(rowField.getText().charAt(0));
             int col = Integer.parseInt(columnField.getText());
 
             // Check if seat is already taken
@@ -112,6 +112,12 @@ public class AdminEditBookingController extends AdminController implements Initi
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(e.getMessage());
             alert.setContentText("Please enter a valid seat column - it must be an integer between 1 and 4.");
+            alert.showAndWait();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid seat row or column");
+            alert.setContentText("The row must be a single capital letter from A to J.\n" +
+                    "The column must be an integer between 1 and 4.");
             alert.showAndWait();
         } catch (IllegalArgumentException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

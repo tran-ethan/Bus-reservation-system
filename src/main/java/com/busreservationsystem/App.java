@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+/**
+ * @author Ethan Tran
+ */
 public class App extends Application {
 
     private static Scene scene;

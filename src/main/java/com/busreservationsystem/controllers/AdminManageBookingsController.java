@@ -147,6 +147,12 @@ public class AdminManageBookingsController extends AdminController implements In
             int col = booking.getColumn() - 1;
             Database.getBusFromId(booking.getBusId()).getSeats()[row][col] = false;
             Database.getClientFromUsername(booking.getClientUsername()).deposit(booking.getPrice());
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Success");
+            alert.setContentText(String.format("Booking for bus %s successfully deleted.", booking.getBusId()));
+            alert.showAndWait();
+
             loadFXML("AdminManageBookings");
         } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);

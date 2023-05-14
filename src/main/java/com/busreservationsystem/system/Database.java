@@ -40,7 +40,7 @@ public class Database {
 
     /**
      * Constructor for the Database.
-     * Fills all according Lists according to JSON files specified.
+     * Sets all according data according to JSON files specified.
      * Parameters specified should contain only the basename of the JSON files
      * stored at the root level of a directory called 'database'.
      *
