@@ -90,7 +90,7 @@ public class ClientViewBookingsController extends ClientController implements In
      * Handles the logic for a user cancelling a booking.
      * Opens bus seating for cancelled seat and refunds money to the Client.
      *
-     * @param event Source of event. Is called when user clicks on "Cancel" button.
+     * @param event Source of event. triggered when user clicks on "Cancel" button.
      */
     @FXML
     void cancelBooking(ActionEvent event) {

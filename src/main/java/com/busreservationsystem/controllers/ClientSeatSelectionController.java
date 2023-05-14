@@ -94,7 +94,7 @@ public class ClientSeatSelectionController extends ClientController implements I
      * Updates data in bus and creates new booking in the name of Client.
      * Withdraws appropriate amount of money from Client's account to match amount of bookings made.
      *
-     * @param event Source of the event - is called when Client clicks on Book button
+     * @param event Source of the event - triggered when Client clicks on Book button
      */
     @FXML
     public void makeBooking(ActionEvent event) {

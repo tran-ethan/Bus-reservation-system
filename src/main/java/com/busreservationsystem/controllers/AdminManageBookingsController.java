@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -22,6 +19,7 @@ import java.util.ResourceBundle;
 
 /**
  * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
  */
 public class AdminManageBookingsController extends AdminController implements Initializable {
 
@@ -46,6 +44,8 @@ public class AdminManageBookingsController extends AdminController implements In
     @FXML
     private TableColumn<Booking, Integer> colCol;
 
+    @FXML
+    private TextField usernameField, busIdField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,15 +88,34 @@ public class AdminManageBookingsController extends AdminController implements In
         table.setItems(bookings);
     }
 
+    /**
+     * Performs filter operation on ObservableList of bookings. Will only filter attributes that are provided.
+     * If an attribute field is not provided, filter will ignore that field. Will filter based
+     * on Client username and bus ID.
+     *
+     * @param event Source of event: triggered when Admin clicks on "Search" button.
+     */
     @FXML
     void submitSearch(ActionEvent event) {
+        String username = usernameField.getText();
+        String busId = busIdField.getText();
 
+        // Filter bus based on non-empty attributes
+        ObservableList<Booking> bookings = FXCollections.observableArrayList();
+        for (Booking booking: Database.getBookings()) {
+            if ((booking.getClientUsername().equals(username) || username.isEmpty())
+            && (booking.getBusId().equals(busId) || busId.isEmpty())) {
+                bookings.add(booking);
+            }
+        }
+
+        table.setItems(bookings);
     }
 
     /**
      * Handles switching page to corresponding editing page for the selected Booking.
      *
-     * @param event Source of event: is called when Admin clicks on "Edit"
+     * @param event Source of event: triggered when Admin clicks on "Edit"
      */
     @FXML
     void editBooking(ActionEvent event) {
@@ -116,7 +135,7 @@ public class AdminManageBookingsController extends AdminController implements In
      * Handles the logic for a user cancelling a booking.
      * Opens bus seating for cancelled seat and refunds money to the Client.
      *
-     * @param event Source of event. Is called when user clicks on "Cancel" button.
+     * @param event Source of event. triggered when user clicks on "Cancel" button.
      */
     @FXML
     void cancelBooking(ActionEvent event) {

@@ -131,7 +131,7 @@ public class ClientMakeBookingsController extends ClientController implements In
      * If an attribute field is not provided, filter will ignore that field.
      * Will display on TableView buses whose fields match all the corresponding fields ID, Origin, Destination.
      *
-     * @param event Source of event: is called when user clicks on "Search" button.
+     * @param event Source of event: triggered when user clicks on "Search" button.
      */
     @FXML
     private void submitSearch(ActionEvent event) {
@@ -155,7 +155,7 @@ public class ClientMakeBookingsController extends ClientController implements In
     /**
      * Performs the action of making a booking by setting CurrentBus so that SeatSelectionController can access bus.
      *
-     * @param event Source of event: is called when user clicks on "Book" button.
+     * @param event Source of event: triggered when user clicks on "Book" button.
      */
     @FXML
     private void makeBooking(ActionEvent event) {

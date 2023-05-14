@@ -50,7 +50,7 @@ public class ClientEditProfileControllerClient extends ClientController implemen
      * Handles changing user credentials, handles appropriate error messages for user interaction.
      * Updates all the bookings to link to the current Client's username.
      *
-     * @param event The source of event: is called when "Save" button is clicked
+     * @param event The source of event: triggered when "Save" button is clicked
      */
     @FXML
     void save(ActionEvent event) {
@@ -117,7 +117,7 @@ public class ClientEditProfileControllerClient extends ClientController implemen
      * Handles the text change event logic for the text fields.
      * Updates the corresponding labels based on the source of the field that has been changed.
      *
-     * @param event The source of the event - is called everytime a character is inputted into a field.
+     * @param event The source of the event - triggered everytime a character is inputted into a field.
      */
     @FXML
     void newCredentialsChange(KeyEvent event) {

@@ -45,7 +45,8 @@ public class Client extends User implements Transactional {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(double balance) throws IllegalArgumentException {
+        if (balance < 0) throw new IllegalArgumentException("Invalid balance");
         this.balance = balance;
     }
 

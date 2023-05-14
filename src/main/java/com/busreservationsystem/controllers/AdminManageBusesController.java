@@ -131,7 +131,7 @@ public class AdminManageBusesController extends AdminController implements Initi
      * If an attribute field is not provided, filter will ignore that field.
      * Will display on TableView buses whose fields match all the corresponding fields ID, Origin, Destination.
      *
-     * @param event Source of event: is called when Admin clicks on "Search" button.
+     * @param event Source of event: triggered when Admin clicks on "Search" button.
      */
     @FXML
     private void submitSearch(ActionEvent event) {
@@ -155,7 +155,7 @@ public class AdminManageBusesController extends AdminController implements Initi
     /**
      * Handles switching page to corresponding editing page for the selected bus in TableView.
      *
-     * @param event Source of event: is called when Admin clicks on "Edit"
+     * @param event Source of event: triggered when Admin clicks on "Edit"
      */
     @FXML
     private void editBus(ActionEvent event) {
@@ -181,7 +181,7 @@ public class AdminManageBusesController extends AdminController implements Initi
      * Handles logic for deleting a bus.
      * Deletes all the bookings that the bus is linked to.
      *
-     * @param event Source of event: is called when Admin clicks on "Delete"
+     * @param event Source of event: triggered when Admin clicks on "Delete"
      */
     @FXML
     private void deleteBus(ActionEvent event) {

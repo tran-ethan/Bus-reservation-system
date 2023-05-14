@@ -42,7 +42,7 @@ public abstract class AdminController {
     public Button gotoEditProfile;
 
     /**
-     * This method is called when one of the buttons on the bottom left of the scene is clicked.
+     * This method triggered when one of the buttons on the bottom left of the scene is clicked.
      * Handles the logic for switching between views.
      * @param event The ActionEvent triggered by clicking one of the buttons.
      */

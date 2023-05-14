@@ -19,8 +19,8 @@ import java.util.ResourceBundle;
 
 
 /**
- * @author Nikolaos Polyronopoulos
  * @author Ethan Tran
+ * @author Nikolaos Polyronopoulos
  */
 public class AdminEditBusController extends AdminController implements Initializable {
 

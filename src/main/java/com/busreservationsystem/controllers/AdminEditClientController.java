@@ -17,8 +17,7 @@ import java.util.ResourceBundle;
 
 /**
  * @author Ethan Tran
- * @author Nikolaos Polyronopoulos
- * @author Christopher Soussa
+ * @author Nikolaos Polyhronopoulos
  */
 public class AdminEditClientController extends AdminController implements Initializable {
 
@@ -47,7 +46,7 @@ public class AdminEditClientController extends AdminController implements Initia
     /**
      * Handles changing client credentials, handles appropriate error messages for user interaction.
      *
-     * @param event The source of the event - is called when "Save" button is clicked
+     * @param event The source of the event - triggered when "Save" button is clicked
      */
     @FXML
     void save(ActionEvent event) {
@@ -80,6 +79,13 @@ public class AdminEditClientController extends AdminController implements Initia
                     newUsername, nameField.getText(), emailField.getText()));
             alert.showAndWait();
 
+            // Reloads page to update left panel
+            loadFXML("AdminManageClients");
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Number " + e.getMessage());
+            alert.setContentText("Please enter a valid number for the client balance.");
+            alert.showAndWait();
         } catch (IllegalArgumentException e) {
             // Display alert
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -90,6 +96,7 @@ public class AdminEditClientController extends AdminController implements Initia
                 case "Username is already taken" -> "Please choose another name. This one already exists.";
                 case "Invalid email format" -> "Please enter a valid email address.";
                 case "Invalid name" -> "Please enter your full name - must contain both first and last name";
+                case "Invalid balance" -> "Please enter a positive balance.";
                 default -> "Please fill all fields before saving.";
             };
             alert.setContentText(error);
@@ -105,8 +112,6 @@ public class AdminEditClientController extends AdminController implements Initia
             alert.showAndWait();
         }
 
-        // Reloads page to update left panel
-        loadFXML("AdminManageClients");
     }
 
     /**

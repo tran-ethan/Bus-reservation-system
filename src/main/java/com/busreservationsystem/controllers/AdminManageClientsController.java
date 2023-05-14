@@ -56,7 +56,7 @@ public class AdminManageClientsController extends AdminController implements Ini
      * If an attribute field is not provided, filter will ignore that field.
      * Will display on TableView buses whose fields match all the corresponding fields Username, full name, email.
      *
-     * @param event Source of event: is called when Admin clicks on "Search" button.
+     * @param event Source of event: triggered when Admin clicks on "Search" button.
      */
     @FXML
     void submitSearch(ActionEvent event) {
@@ -81,7 +81,7 @@ public class AdminManageClientsController extends AdminController implements Ini
      * Handles logic for deleting a client.
      * Deletes all the bookings that the user currently possesses.
      *
-     * @param event Source of event: is called when Admin clicks on "Delete"
+     * @param event Source of event: triggered when Admin clicks on "Delete"
      */
     @FXML
     void deleteClient(ActionEvent event) {
@@ -110,7 +110,7 @@ public class AdminManageClientsController extends AdminController implements Ini
     /**
      * Handles switching page to corresponding editing page for the selected Client.
      *
-     * @param event Source of event: is called when Admin clicks on "Edit"
+     * @param event Source of event: triggered when Admin clicks on "Edit"
      */
     @FXML
     void editClient(ActionEvent event) {

@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 
 
 /**
+ * @author Ethan Tran
  * @author Nikolaos Polyronopoulos
- * @author Christopher Soussa
  */
 public class AdminEditProfileController extends AdminController implements Initializable {
 
@@ -47,7 +47,7 @@ public class AdminEditProfileController extends AdminController implements Initi
     /**
      * Handles changing user credentials, handles appropriate error messages for user interaction.
      *
-     * @param event The source of the event - is called when "Save" button is clicked
+     * @param event The source of the event - triggered when "Save" button is clicked
      */
     @FXML
     void save(ActionEvent event) {
@@ -108,7 +108,7 @@ public class AdminEditProfileController extends AdminController implements Initi
      * Handles the text change event for the text fields
      * Updates the corresponding labels based on the source of the field that has been changed.
      *
-     * @param event Source of the event - is called everytime a character is inputted into a field.
+     * @param event Source of the event - triggered everytime a character is inputted into a field.
      */
     @FXML
     void newCredentialsChange(KeyEvent event) {
