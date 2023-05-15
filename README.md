@@ -24,7 +24,7 @@ To run the Bus Reservation Java App, you have three options:
 
 3. In your selected IDE, open the project as a Maven project and run the `Main.app()`, or execute the following command:
     ```shell
-   Execute the following command:
+   java -cp bin App
    ```
    
 ### Option 3:  Run with JavaFX Maven Plugin

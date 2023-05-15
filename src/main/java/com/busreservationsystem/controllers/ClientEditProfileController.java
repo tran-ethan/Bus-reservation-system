@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 /**
  * @author Nikolaos Polyronopoulos
  * @author Christopher Soussa
- * @author Ethan Tran
  */
 public class ClientEditProfileController extends ClientController implements Initializable {
 

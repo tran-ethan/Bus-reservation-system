@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 
 /**
  * @author Ethan Tran
- * @author Nikolaos Polyronopoulos
  */
 public class AdminManageClientsController extends AdminController implements Initializable {
 

@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 
 
 /**
- * @author Ethan Tran
  * @author Nikolaos Polyronopoulos
+ * @author Christopher Soussa
  */
 public class AdminEditProfileController extends AdminController implements Initializable {
 

@@ -14,7 +14,7 @@ import java.time.LocalTime;
  * A single booking ticket is unique to the Client, and clients will only be able to view their own bookings.
  *
  * @author Nikolaos Polyhronopoulos
- * @author Ethan Tran
+ * @author Christopher Soussa
  */
 public class Booking {
 

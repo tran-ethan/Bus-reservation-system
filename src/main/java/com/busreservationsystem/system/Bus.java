@@ -12,7 +12,7 @@ import java.time.LocalTime;
  * The Bus class represents a single Bus that can travel to and from a location.
  * Every bus has a unique identifier Bus ID, and a 2D boolean array containing information regarding the seats.
  *
- * @author Ethan Tran
+ * @author Nikolaos Polyhronopoulos
  * @author Christopher Soussa
  */
 public class Bus {

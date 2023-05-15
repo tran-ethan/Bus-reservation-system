@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 /**
  * @author Ethan Tran
- * @author Nikolaos Polyronopoulos
  */
 public class AdminEditBookingController extends AdminController implements Initializable {
 

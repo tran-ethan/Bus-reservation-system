@@ -5,8 +5,8 @@ package com.busreservationsystem.system;
  * with the ability to search and book seats on a particular bus.
  * Is subclass of User.
  *
- * @author Ethan Tran
  * @author Nikolaos Polyhronopoulos
+ * @author Christopher Soussa
  */
 
 public class Client extends User implements Transactional {
