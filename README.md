@@ -16,13 +16,13 @@ To run the Bus Reservation Java App, you have three options:
     ```
     This will start the application.
 
-### Option 2: Run the Main Class
+### Option 2: Run the App Class
 
 1. Open the terminal or command prompt.
 
 2. Navigate to the root directory of the project.
 
-3. In your selected IDE, open the project as a Maven project and run the `Main.app()`, or execute the following command:
+3. In your selected IDE, open the project as a Maven project and run the `App.main()`, or execute the following command:
     ```shell
    java -cp bin App
    ```
