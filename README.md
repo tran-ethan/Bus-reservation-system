@@ -10,11 +10,13 @@ To run the Bus Reservation Java App, you have three options:
 
 2. Navigate to the root directory of the project.
 
-3. Execute the following command, or double-click on the JAR file at the root directory:
+3. Execute the following command at the root directory, or double-click on the JAR file to execute it:
     ```shell
     java -jar BusReservationSystem.jar
     ```
-    This will start the application.
+   This will start the application. Make sure the SDK is properly installed and configured to use Java JDK version 18.
+   To verify, run `java -version` in terminal. If using Windows, configure environment variables `PATH` to the JDK 
+   version 18 bin location, and `JAVA_HOME` to JDK location.
 
 ### Option 2: Run the App Class
 
@@ -22,20 +24,19 @@ To run the Bus Reservation Java App, you have three options:
 
 2. Navigate to the root directory of the project.
 
-3. In your selected IDE, open the project as a Maven project and run the `App.main()`, or execute the following command:
-    ```shell
-   java -cp bin App
-   ```
+3. In your selected IDE, open the project as a Maven project (in IntelliJ, open pom.xml), and run the `App.main()`. 
+   Make sure the SDK is configured to Java Development Kit (JDK) version 18.
    
 ### Option 3:  Run with JavaFX Maven Plugin
-1. Ensure that you have Apache Maven installed on your system.
+1. Open a terminal or command prompt.
 
-2. Open a terminal or command prompt.
+2. Navigate to the root directory of the project.
 
-3. Navigate to the root directory of the project.
-
-4. Execute the following command:
+3. Execute the following command:
     ```shell
-    mvn javafx:run
+    mvnw.cmd javafx:run
     ```
-   
+   Alternatively, if using IntelliJ integrated command prompt, run:
+   ```shell
+    ./mvnw javafx:run
+    ```
