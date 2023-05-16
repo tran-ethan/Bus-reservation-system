@@ -22,7 +22,7 @@ To run the Bus Reservation Java App, you have three options:
 
 1. Open your selected IDE
 
-2In your selected IDE, open the project as a Maven project (in IntelliJ, open pom.xml), and run the `App.main()`. 
+2. Open the project as a Maven project (in IntelliJ, open pom.xml), and run the `App.main()`. 
    Make sure the SDK is configured to Java Development Kit (JDK) version 18.
    
 ### Option 3:  Run with JavaFX Maven Plugin
