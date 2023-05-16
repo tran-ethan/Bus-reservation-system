@@ -10,7 +10,7 @@ To run the Bus Reservation Java App, you have three options:
 
 2. Navigate to the root directory of the project.
 
-3. Execute the following command at the root directory, or double-click on the JAR file to execute it:
+3. Double-click on the JAR file to execute it, or execute the following command at the root directory:
     ```shell
     java -jar BusReservationSystem.jar
     ```
@@ -18,7 +18,7 @@ To run the Bus Reservation Java App, you have three options:
    To verify, run `java -version` in terminal. If using Windows, configure environment variables `PATH` to the JDK 
    version 18 bin location, and `JAVA_HOME` to JDK location.
 
-### Option 2: Run the App Class
+### Option 2: Run the App Class in an IDE
 
 1. Open the terminal or command prompt.
 
@@ -35,8 +35,4 @@ To run the Bus Reservation Java App, you have three options:
 3. Execute the following command:
     ```shell
     mvnw.cmd javafx:run
-    ```
-   Alternatively, if using IntelliJ integrated command prompt, run:
-   ```shell
-    ./mvnw javafx:run
     ```
