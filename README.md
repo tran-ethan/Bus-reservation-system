@@ -1,7 +1,7 @@
 # Bus Reservation Java App
 
 ## Project Report
-[Click to open project report](Project%20Report.docx)
+[Click to open project report](Project-Report.pdf)
 
 ## Usage
 To run the Bus Reservation Java App, you have three options:
