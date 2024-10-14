@@ -1,4 +1,4 @@
-# Bus Reservation Java App
+# Bus Reservation System
 The Bus Reservation System is a software application designed to streamline the process of booking and managing bus tickets for both customers and administrators. It is a user-friendly and efficient software application developed to simplify the process of reserving bus seats, managing bookings, and maintaining user profiles. The system provides an intuitive GUI designed using JavaFX, offering a seamless experience for both administrators and clients. It utilizes the Jackson library for data storage in JSON files, ensuring reliable and secure data management.
 The primary goal of the software is to offer a convenient and reliable platform where passengers can effortlessly search for available bus routes, check seat availability, and make secure reservations from the comfort of their homes or on the go. The system also provides bus operators with a comprehensive management tool to efficiently manage their buses, schedules, and bookings.
 
